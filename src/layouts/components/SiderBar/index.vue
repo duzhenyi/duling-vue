@@ -6,8 +6,8 @@
     <a-menu
       :default-selected-keys="['1']"
       :default-open-keys="['sub1']"
-      :mode="mode"
-      :theme="theme"
+      :mode="menuMode"
+      :theme="menuTheme"
     >
       <a-menu-item key="1">
         <a-icon type="mail" />
@@ -64,13 +64,13 @@ export default {
       default: false
     },
     //菜单类型，现在支持垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inlin
-    mode: {
+    menuMode: {
       type: String,
       required: false,
       default: "horizontal"
     },
     //主题颜色 string: light dark
-    theme: {
+    menuTheme: {
       type: String,
       required: false,
       default: "dark"

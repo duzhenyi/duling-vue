@@ -169,8 +169,8 @@ export default {
   },
   created() {
     // 获取缓存里面的配置
-    const theme = localStorage.getItem("DL-VUE-THEME");
-    this.form = theme
+    //const theme = localStorage.getItem("DL-VUE-THEME");
+    //this.form = theme
     
     //兄弟组件点击图标按钮的时候传值过来
     Bus.$on("showThemeDrawer", val => {

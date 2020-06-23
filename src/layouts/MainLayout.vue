@@ -5,8 +5,8 @@
       <header-bar
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
-        :mode="appconfig.mode"
-        :theme="appconfig.theme"
+        :menuMode="appconfig.menuMode"
+        :menuTheme="appconfig.menuTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <content-bar></content-bar>
@@ -20,12 +20,12 @@
       <header-bar
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
-        :mode="appconfig.mode"
-        :theme="appconfig.theme"
+        :menuMode="appconfig.menuMode"
+        :menuTheme="appconfig.menuTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
-        <sider-bar :mode="appconfig.mode" :theme="appconfig.theme"></sider-bar>
+        <sider-bar :menuMode="appconfig.menuMode" :menuTheme="appconfig.menuTheme"></sider-bar>
         <content-bar></content-bar>
       </a-layout>
       <footer-bar></footer-bar>
@@ -38,8 +38,8 @@
       <header-bar
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
-        :mode="appconfig.mode"
-        :theme="appconfig.theme"
+        :menuMode="appconfig.menuMode"
+        :menuTheme="appconfig.menuTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
@@ -52,8 +52,8 @@
     <!--左右（header+content+footer）布局-->
     <a-layout v-if="appconfig.layout==='horizontal' && appconfig.fixedSideBar">
       <sider-bar
-        :mode="appconfig.mode"
-        :theme="appconfig.theme"
+        :menuMode="appconfig.menuMode"
+        :menuTheme="appconfig.menuTheme"
         :fixedSideBar="appconfig.fixedSideBar"
         :displayLogo="appconfig.displayLogo"
         :layout="appconfig.layout"
@@ -63,8 +63,8 @@
           :fixedHeaderBar="appconfig.fixedHeaderBar"
           :fixedSideBar="appconfig.fixedSideBar"
           :layout="appconfig.layout"
-          :mode="appconfig.mode"
-          :theme="appconfig.theme"
+          :menuMode="appconfig.menuMode"
+          :menuTheme="appconfig.menuTheme"
           :displayLogo="appconfig.displayLogo"
         ></header-bar>
         <content-bar></content-bar>

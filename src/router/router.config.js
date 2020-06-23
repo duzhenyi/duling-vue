@@ -24,6 +24,10 @@ export const routes =
             ],
         },
         {
+            path: '/login',
+            component: () => import('@/views/login')
+        },
+        {
             path: '/401',
             component: () => import('@/views/exception/401')
         },
