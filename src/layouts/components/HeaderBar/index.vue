@@ -3,7 +3,7 @@
     <!--logo-->
     <div class="headerLogo" v-if="displayLogo && !fixedSideBar" />
     <!--顶部菜单-->
-    <a-menu v-if="!fixedSideBar" :theme="theme" :mode="mode" :style="{ lineHeight: '64px' }">
+    <a-menu v-if="!fixedSideBar" :theme="menuTheme" :mode="menuMode" :style="{ lineHeight: '64px' }">
       <a-menu-item key="1">nav 1</a-menu-item>
       <a-menu-item key="2">nav 2</a-menu-item>
       <a-menu-item key="3">nav 3</a-menu-item>
@@ -11,7 +11,7 @@
       <a-menu-item key="5">nav 5</a-menu-item>
     </a-menu>
     <!--当布局是垂直布局vertical时side存在的时候才会出现-->
-    <span :class="theme=== 'light' ? 'trigger theme-color' : 'trigger'">
+    <span :class="menuTheme=== 'light' ? 'trigger theme-color' : 'trigger'">
       <a-icon
         v-if="layout==='horizontal'"
         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
@@ -232,13 +232,13 @@ export default {
       default: false
     },
     //菜单类型，现在支持垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inlin
-    mode: {
+    menuMode: {
       type: String,
       required: false,
       default: "horizontal"
     },
     //主题颜色 string: light dark
-    theme: {
+    menuTheme: {
       type: String,
       required: false,
       default: "dark"
