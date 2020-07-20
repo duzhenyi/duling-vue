@@ -75,6 +75,7 @@ const userInfo = {
         async loginOut({ commit, state }) {
             return new Promise((resolve) => {
                 logout(state.accessToken).then(() => {
+                    removeAccessToken(AccessToken);
                     resolve()
                 }).catch(() => {
                     resolve()

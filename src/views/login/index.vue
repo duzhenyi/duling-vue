@@ -107,7 +107,6 @@ export default {
           values.password = md5(values.password);
           this.login(values)
             .then(res => {
-              debugger;
               that.$router.push({ path: that.redirect }).catch(error => {});
               that.loginBtnLoading = false;
             })

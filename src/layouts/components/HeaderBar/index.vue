@@ -403,7 +403,7 @@
                   <a-icon :style="{ fontSize: '16px' }" type="setting" />系统设置
                 </a-menu-item>
                 <a-menu-divider />
-                <a-menu-item key="3">
+                <a-menu-item key="3" @click="logoOut">
                   <a-icon :style="{ fontSize: '16px'}" type="logout" />退出系统
                 </a-menu-item>
               </a-menu>
@@ -418,6 +418,7 @@
 import ThemeBar from "_c/ThemeBar";
 import ScreenfullBar from "_c/ScreenfullBar";
 import Bus from "../bus";
+import { mapActions } from "vuex";
 export default {
   components: {
     ScreenfullBar,
@@ -448,6 +449,7 @@ export default {
     });
   },
   methods: {
+    ...mapActions(["loginOut"]),
     displaySideMenuClick() {
       this.collapsed = !this.collapsed;
       //子组件向兄弟组件传值
@@ -459,6 +461,19 @@ export default {
       this.visible = !this.visible;
       // 传值给主题配置页面
       Bus.$emit("showThemeDrawer", this.visible);
+    },
+    //退出系统
+    logoOut() {
+      debugger;
+      let that = this;
+      this.loginOut()
+        .then(res => {
+          that.$router.push({ path: "/login" }).catch(error => {});
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .finally(() => {});
     }
   },
   props: {
