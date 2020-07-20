@@ -6,20 +6,20 @@
  * 4. 管理用户功能权限&数据权限信息
  */
 import Vue from 'vue'
-import Vuex from 'vuex'
 
+// 有了vuex，我们不必在考虑组件之间的传值，直接就可以通过$store来获取不同的数据
+import Vuex from 'vuex'
 Vue.use(Vuex);
 
 // 加载所有modules下的js文件
 const files = require.context("./modules", false, /\.js$/);
 
-const stores = {};
-
-// 
+const sotres = {};
 files.keys().forEach((key) => {
-    stores[key.replace(/(\.\/|\.js)/g, "")] = files(key).default;
+    sotres[key.replace(/(\.\/|\.js)/g, "")] = files(key).default;
 });
 
-export default new Vuex.Store({
-    stores
-})
+const store = new Vuex.Store({
+    modules:sotres
+});
+export default store;

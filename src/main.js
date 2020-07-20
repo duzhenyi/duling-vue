@@ -7,17 +7,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './components/AntDesignCore/antDesignCompents'
-import './aop/permission'
+import './global/permission'
 
 // 全局状态管理器
-import store from "@/cache"
+import store from "@/store"
 
 //以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
 
 new Vue({
   router,//默认表示 router:router
-  store,
+  store, //将我们创建的Vuex实例挂载到这个vue实例中
   render: h => h(App),
   //手动挂载, 当Vue实例没有el属性时，则该实例尚没有挂载到某个dom中；假如需要延迟挂载，可以在之后手动调用vm.$mount()方法来挂载
 }).$mount('#app')

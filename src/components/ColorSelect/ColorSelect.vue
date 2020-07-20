@@ -81,8 +81,8 @@ export default {
       selectColor: {}
     };
   },
-  created() {
-    this.selectColor = this.color;
+  created() { 
+    this.selectColor.hex = this.color;
   },
   methods: {
     ok() {

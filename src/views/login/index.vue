@@ -12,21 +12,29 @@
           </a-input>
         </a-form-item>
         <a-form-item>
-          <a-input
+          <a-input-password
             v-decorator="['password',{ rules: [{ required: true, message: '请输入密码' }] },]"
             type="password"
             placeholder="请输入密码"
           >
             <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
-          </a-input>
+          </a-input-password>
         </a-form-item>
         <a-form-item>
-          <a-checkbox v-decorator="['remember',{valuePropName: 'checked',initialValue: true,},]">记住账号</a-checkbox>
+          <a-checkbox
+            v-decorator="['remember',{valuePropName: 'checked',initialValue: true,},]"
+          >记住账号</a-checkbox>
           <a class="login-form-forgot" href>
             忘记密码
             <a-icon type="question" />
           </a>
-          <a-button type="primary" html-type="submit" class="login-form-button">登录</a-button>
+          <a-button
+            type="primary"
+            html-type="submit"
+            :loading="loginBtnLoading"
+            :disabled="loginBtnLoading"
+            class="login-form-button"
+          >登录</a-button>
           <div class="anticon-layout">
             <a-divider class="anticon-divider">第三方快捷登录</a-divider>
             <a>
@@ -54,22 +62,52 @@
   </div>
 </template>
 <script>
+// MD5加密
+import md5 from "md5";
+
+// 当我们的组件需要获取多个状态的时候，将这些状态都声明为计算属性会有些重复和冗余，
+// 为了解决这个问题，我们可以使用mapState的辅助函数来帮助我们生成计算属性。
+// mapActions/mapState函数返回的是一个对象，
+// 我们需要使用一个工具函数将多个对象合并为一个，这样就可以使我们将最终对象传给computed属性
+import { mapActions } from "vuex";
 export default {
   name: "Login",
   components: {},
   data() {
     return {
+      loginBtnLoading: false,
       form: this.$form.createForm(this, { name: "normal_login" })
     };
   },
-  created() {},
+  created() {
+    console.log(this.$store);
+  },
   methods: {
+    // mapActions 使用方法一 将 this.commonActionGet() 映射为 this.$store.dispatch('commonActionGet')
+    ...mapActions(["RequestLogin"]),
     handleSubmit(e) {
+      // 阻止冒泡事件
       e.preventDefault();
+
+      // 提交按钮禁用以及刷新状态
+      this.loginBtnLoading = true;
+
+      // 进行form表单验证，查看每个表单项里面的rule
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
+        } else {
+          this.form.setField("passwor", md5(values.password));
+          // RequestLogin(values)
+          //   .then(res => {
+          //     console.log(res);
+          //   })
+          //   .catch(err => {
+          //     console.log(res);
+          //   })
+          //   .finally(() => {});
         }
+        this.loginBtnLoading = false;
       });
     }
   }

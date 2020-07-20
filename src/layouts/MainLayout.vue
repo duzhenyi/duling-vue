@@ -6,7 +6,7 @@
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
-        :menuTheme="appconfig.menuTheme"
+        :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <content-bar></content-bar>
@@ -21,11 +21,11 @@
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
-        :menuTheme="appconfig.menuTheme"
+        :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
-        <sider-bar :menuMode="appconfig.menuMode" :menuTheme="appconfig.menuTheme"></sider-bar>
+        <sider-bar :menuMode="appconfig.menuMode" :sideTheme="appconfig.sideTheme"></sider-bar>
         <content-bar></content-bar>
       </a-layout>
       <footer-bar></footer-bar>
@@ -39,7 +39,7 @@
         :fixedSideBar="appconfig.fixedSideBar"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
-        :menuTheme="appconfig.menuTheme"
+        :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
@@ -53,7 +53,7 @@
     <a-layout v-if="appconfig.layout==='horizontal' && appconfig.fixedSideBar">
       <sider-bar
         :menuMode="appconfig.menuMode"
-        :menuTheme="appconfig.menuTheme"
+        :sideTheme="appconfig.sideTheme"
         :fixedSideBar="appconfig.fixedSideBar"
         :displayLogo="appconfig.displayLogo"
         :layout="appconfig.layout"
@@ -64,7 +64,7 @@
           :fixedSideBar="appconfig.fixedSideBar"
           :layout="appconfig.layout"
           :menuMode="appconfig.menuMode"
-          :menuTheme="appconfig.menuTheme"
+          :headerTheme="appconfig.headerTheme"
           :displayLogo="appconfig.displayLogo"
         ></header-bar>
         <content-bar></content-bar>
@@ -90,11 +90,30 @@ export default {
       appconfig: appconfig
     };
   },
+  created() {
+    
+    this.appconfig.layout = this.$store.getters.layout;
+    this.appconfig.menuColor = this.$store.getters.menuColor;
+    this.appconfig.headerTheme = this.$store.getters.headerTheme;
+    this.appconfig.sideTheme = this.$store.getters.sideTheme;
+    this.appconfig.menuMode = this.$store.getters.menuMode;
+    this.appconfig.displayLogo = this.$store.getters.displayLogo;
+    this.appconfig.fixedHeaderBar = this.$store.getters.fixedHeaderBar;
+    this.appconfig.topBar = this.$store.getters.topBar;
+    this.appconfig.hideTopBarWhenSliding = this.$store.getters.hideTopBarWhenSliding;
+    this.appconfig.fixedSideBarToLeft = this.$store.getters.fixedSideBarToLeft;
+    this.appconfig.sidebarOpensAccordionMode = this.$store.getters.sidebarOpensAccordionMode;
+    this.appconfig.showCollapseSidebarButton = this.$store.getters.showCollapseSidebarButton;
+    this.appconfig.showGlobalBreadcrumbNavigation = this.$store.getters.showGlobalBreadcrumbNavigation;
+    this.appconfig.globalBreadcrumbDisplayIcon = this.$store.getters.globalBreadcrumbDisplayIcon;
+    this.appconfig.showReloadPageButton = this.$store.getters.showReloadPageButton;
+    this.appconfig.openMultipleTabs = this.$store.getters.openMultipleTabs;
+    this.appconfig.showMultilingualSelection = this.$store.getters.showMultilingualSelection;
+  },
   methods: {},
   computed: {},
   watch: {},
   beforeCreate() {},
-  created() {},
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
@@ -102,6 +121,7 @@ export default {
 };
 </script>
 <style>
+
 #components-layout-basic .ant-layout-content {
   background: silver;
   color: #fff;
@@ -119,9 +139,9 @@ export default {
 
 /**side */
 #components-layout-basic .trigger {
-  font-size: 18px;
+  /* font-size: 18px; */
   line-height: 64px;
-  padding: 0 24px;
+  /* padding: 0 24px; */
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -132,13 +152,30 @@ export default {
 
 #components-layout-basic .sideLogo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+  margin: 16px 0px 16px 22px;
 }
 #components-layout-basic .theme-color {
-  color:  rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 #components-layout-basic .theme-color:hover {
   color: #1890ff;
 }
+
+/*logo样式 */
+.logo {
+  width: 35px;
+  height: 100%;
+  vertical-align:middle;
+  display: inline-block;
+}
+.logo-title {
+  color: #fff;
+  font-size: 16px;
+  margin: 0 0 0 12px;
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  vertical-align: middle; 
+  display: inline-block;
+}
+
 </style>

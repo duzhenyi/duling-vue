@@ -1,14 +1,23 @@
+/**
+ * ① 依赖state得到新的数据，用getters（跟computed一样，只读）
+ * ② 修改state的属性值，就用mutations（同步操作）
+ */
 import appconfig from "@/config/appconfig"
 const cacheTheme = JSON.parse(localStorage.getItem("Duling-VUE-THEME")) || "";
-
+// console.log('cacheTheme:', cacheTheme)
 const apptheme = {
+    // 需要在state中定义变量，类似于vue中的data，通过state来存放状态
     state: {
         // 横纵布局 水平布局：horizontal 垂直布局：vertical 
         layout: cacheTheme.layout || appconfig.layout,
-        // 菜单主题颜色 light dark
-        menuTheme: cacheTheme.menuTheme || appconfig.menuTheme,
+        // 菜单颜色
+        menuColor: cacheTheme.menuColor || appconfig.menuColor,
+        // 头部主题颜色 light dark
+        headerTheme: cacheTheme.headerTheme || appconfig.headerTheme,
+        // 侧边栏主题颜色 light dark
+        sideTheme: cacheTheme.sideTheme || appconfig.sideTheme,
         // 菜单类型 垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inline
-        menuMode: cacheTheme.menuMode || appconfig.momenuModede,
+        menuMode: cacheTheme.menuMode || appconfig.menuMode,
         // 是否显示logo
         displayLogo: cacheTheme.displayLogo || appconfig.displayLogo,
         // 固定顶栏
@@ -36,11 +45,20 @@ const apptheme = {
         // 显示多语言选择
         showMultilingualSelection: cacheTheme.showMultilingualSelection || appconfig.showMultilingualSelection,
     },
+    // 加工state成员给外界 getters相当于vue中的计算属性(跟computed一样，只读)，通过getters进一步处理，得到我们想要的值，而且允许传参，第一个参数就是state
     getters: {
         // 横纵布局 水平布局：horizontal 垂直布局：vertical 
-        layout: (state) => state.layout,
-        // 菜单主题颜色 light dark
-        menuTheme: (state) => state.menuTheme,
+        layout(state) {
+            //console.log(state)
+            return state.layout
+        },
+        menuColor(state) {
+            return state.menuColor
+        },
+        // 头部主题颜色 light dark
+        headerTheme: (state) => state.headerTheme,
+        // 侧边栏主题颜色 light dark
+        sideTheme: (state) => state.sideTheme,
         // 菜单类型 垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inline
         menuMode: (state) => state.menuMode,
         // 是否显示logo
@@ -70,137 +88,153 @@ const apptheme = {
         // 显示多语言选择
         showMultilingualSelection: (state) => state.showMultilingualSelection,
     },
+    // 类似于vue中的methods，mutations需要通过commit来调用其里面的方法，它也可以传入参数，第一个参数是state，第二个参数是载荷（payLoad），也就是额外的参数
     mutations: {
-        //// 横纵布局 水平布局：horizontal 垂直布局：vertical 
-        changeLayout: (state, layout) => {
+        // 横纵布局 水平布局：horizontal 垂直布局：vertical 
+        setLayout: (state, layout) => {
             if (layout) state.layout = layout;
         },
-        // 菜单主题颜色 light dark
-        changeMenuTheme: (state, menuTheme) => {
-            if (menuTheme) state.menuTheme = menuTheme;
+        setMenuColor: (state, menuColor) => {
+            if (menuColor) state.menuColor = menuColor;
+        },
+        // 头部主题颜色 light dark
+        setHeaderTheme: (state, headerTheme) => {
+            if (headerTheme) state.headerTheme = headerTheme;
+        },
+        // 侧边栏主题颜色 light dark
+        setSideTheme: (state, sideTheme) => {
+            if (sideTheme) state.sideTheme = sideTheme;
         },
         // 菜单类型 垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inline
-        changeMenuMode: (state, menuMode) => {
+        setMenuMode: (state, menuMode) => {
             if (menuMode) state.menuMode = menuMode;
         },
         // 是否显示logo
-        changeDisplayLogo: (state, displayLogo) => {
+        setDisplayLogo: (state, displayLogo) => {
             if (displayLogo) state.displayLogo = displayLogo;
         },
         // 固定顶栏
-        changeFixedHeaderBar: (state, fixedHeaderBar) => {
+        setFixedHeaderBar: (state, fixedHeaderBar) => {
             if (fixedHeaderBar) state.fixedHeaderBar = fixedHeaderBar;
         },
         // 置顶顶栏 -需开启固定顶栏
-        changeTopBar: (state, topBar) => {
+        setTopBar: (state, topBar) => {
             if (topBar) state.topBar = topBar;
         },
         // 下滑时隐藏顶栏 -需开启固定顶栏
-        changeHideTopBarWhenSliding: (state, hideTopBarWhenSliding) => {
+        setHideTopBarWhenSliding: (state, hideTopBarWhenSliding) => {
             if (hideTopBarWhenSliding) state.hideTopBarWhenSliding = hideTopBarWhenSliding;
         },
         // 固定侧边栏
-        changeFixedSideBar: (state, fixedSideBar) => {
+        setFixedSideBar: (state, fixedSideBar) => {
             if (fixedSideBar) state.fixedSideBar = fixedSideBar;
         },
         // 侧边栏展示到左侧
-        changeFixedSideBarToLeft: (state, fixedSideBarToLeft) => {
+        setFixedSideBarToLeft: (state, fixedSideBarToLeft) => {
             if (fixedSideBarToLeft) state.fixedSideBarToLeft = fixedSideBarToLeft;
         },
         // 侧边栏开启手风琴模式
-        changeSidebarOpensAccordionMode: (state, sidebarOpensAccordionMode) => {
+        setSidebarOpensAccordionMode: (state, sidebarOpensAccordionMode) => {
             if (sidebarOpensAccordionMode) state.sidebarOpensAccordionMode = sidebarOpensAccordionMode;
         },
         // 显示折叠侧边栏按钮
-        changeShowCollapseSidebarButton: (state, showCollapseSidebarButton) => {
+        setShowCollapseSidebarButton: (state, showCollapseSidebarButton) => {
             if (showCollapseSidebarButton) state.showCollapseSidebarButton = showCollapseSidebarButton;
         },
         // 显示全局面包屑导航 -顶部菜单开启时无效
-        changeShowGlobalBreadcrumbNavigation: (state, showGlobalBreadcrumbNavigation) => {
+        setShowGlobalBreadcrumbNavigation: (state, showGlobalBreadcrumbNavigation) => {
             if (showGlobalBreadcrumbNavigation) state.showGlobalBreadcrumbNavigation = showGlobalBreadcrumbNavigation;
         },
         // 全局面包屑显示图标 -需开启全局面包屑导航
-        changeGlobalBreadcrumbDisplayIcon: (state, globalBreadcrumbDisplayIcon) => {
+        setGlobalBreadcrumbDisplayIcon: (state, globalBreadcrumbDisplayIcon) => {
             if (globalBreadcrumbDisplayIcon) state.globalBreadcrumbDisplayIcon = globalBreadcrumbDisplayIcon;
         },
         // 显示重载页面按钮
-        changeShowReloadPageButton: (state, showReloadPageButton) => {
+        setShowReloadPageButton: (state, showReloadPageButton) => {
             if (showReloadPageButton) state.showReloadPageButton = showReloadPageButton;
         },
         // 开启多页签
-        changeOpenMultipleTabs: (state, openMultipleTabs) => {
+        setOpenMultipleTabs: (state, openMultipleTabs) => {
             if (openMultipleTabs) state.openMultipleTabs = openMultipleTabs;
         },
         // 显示多语言选择
-        changeShowMultilingualSelection: (state, showMultilingualSelection) => {
+        setShowMultilingualSelection: (state, showMultilingualSelection) => {
             if (showMultilingualSelection) state.showMultilingualSelection = showMultilingualSelection;
         },
     },
+    // action类似于mutation， action可以提交mutation，action也不要直接去操作state，而是去操作mutation
+    // action包含异步操作，类似于axios请求，可以都放在action中写，action中的方法默认的就是异步，并且返回promise
     actions: {
-
         // 横纵布局 水平布局：horizontal 垂直布局：vertical 
-        changeLayout({ commit }, layout) {
-            commit("changeLayout", layout);
+        setLayout({ commit }, layout) {
+            commit("setLayout", layout);
         },
-        // 菜单主题颜色 light dark
-        changeMenuTheme({ commit }, menuTheme) {
-            commit("changeMenuTheme", menuTheme);
+        setMenuColor({ commit }, menuColor) {
+            commit("setMenuColor", menuColor);
+        },
+        // 头部主题颜色 light dark
+        setHeaderTheme({ commit }, headerTheme) {
+            commit("setHeaderTheme", headerTheme);
+        },
+        // 侧边栏主题颜色 light dark
+        setSideTheme({ commit }, sideTheme) {
+            commit("setSideTheme", sideTheme);
         },
         // 菜单类型 垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inline
-        changeMenuMode({ commit }, menuMode) {
-            commit("changeMenuMode", menuMode);
+        setMenuMode({ commit }, menuMode) {
+            commit("setMenuMode", menuMode);
         },
         // 是否显示logo
-        changeDisplayLogo({ commit }, displayLogo) {
-            commit("changeDisplayLogo", displayLogo);
+        setDisplayLogo({ commit }, displayLogo) {
+            commit("setDisplayLogo", displayLogo);
         },
         // 固定顶栏
-        changeFixedHeaderBar({ commit }, fixedHeaderBar) {
-            commit("changeFixedHeaderBar", fixedHeaderBar);
+        setFixedHeaderBar({ commit }, fixedHeaderBar) {
+            commit("setFixedHeaderBar", fixedHeaderBar);
         },
         // 置顶顶栏 -需开启固定顶栏
-        changeTopBar({ commit }, topBar) {
-            commit("changeTopBar", topBar);
+        setTopBar({ commit }, topBar) {
+            commit("setTopBar", topBar);
         },
         // 下滑时隐藏顶栏 -需开启固定顶栏
-        changeHideTopBarWhenSliding({ commit }, hideTopBarWhenSliding) {
-            commit("changeHideTopBarWhenSliding", hideTopBarWhenSliding);
+        setHideTopBarWhenSliding({ commit }, hideTopBarWhenSliding) {
+            commit("setHideTopBarWhenSliding", hideTopBarWhenSliding);
         },
         // 固定侧边栏
-        changeFixedSideBar({ commit }, fixedSideBar) {
-            commit("changeFixedSideBar", fixedSideBar);
+        setFixedSideBar({ commit }, fixedSideBar) {
+            commit("setFixedSideBar", fixedSideBar);
         },
         // 侧边栏展示到左侧
-        changeFixedSideBarToLeft({ commit }, fixedSideBarToLeft) {
-            commit("changeFixedSideBarToLeft", fixedSideBarToLeft);
+        setFixedSideBarToLeft({ commit }, fixedSideBarToLeft) {
+            commit("setFixedSideBarToLeft", fixedSideBarToLeft);
         },
         // 侧边栏开启手风琴模式
-        changeSidebarOpensAccordionMode({ commit }, sidebarOpensAccordionMode) {
-            commit("changeSidebarOpensAccordionMode", sidebarOpensAccordionMode);
+        setSidebarOpensAccordionMode({ commit }, sidebarOpensAccordionMode) {
+            commit("setSidebarOpensAccordionMode", sidebarOpensAccordionMode);
         },
         // 显示折叠侧边栏按钮
-        changeShowCollapseSidebarButton({ commit }, showCollapseSidebarButton) {
-            commit("changeShowCollapseSidebarButton", showCollapseSidebarButton);
+        setShowCollapseSidebarButton({ commit }, showCollapseSidebarButton) {
+            commit("setShowCollapseSidebarButton", showCollapseSidebarButton);
         },
         // 显示全局面包屑导航 -顶部菜单开启时无效
-        changeShowGlobalBreadcrumbNavigation({ commit }, showGlobalBreadcrumbNavigation) {
-            commit("changeShowGlobalBreadcrumbNavigation", showGlobalBreadcrumbNavigation);
+        setShowGlobalBreadcrumbNavigation({ commit }, showGlobalBreadcrumbNavigation) {
+            commit("setShowGlobalBreadcrumbNavigation", showGlobalBreadcrumbNavigation);
         },
         // 全局面包屑显示图标 -需开启全局面包屑导航
-        changeGlobalBreadcrumbDisplayIcon({ commit }, globalBreadcrumbDisplayIcon) {
-            commit("changeGlobalBreadcrumbDisplayIcon", globalBreadcrumbDisplayIcon);
+        setGlobalBreadcrumbDisplayIcon({ commit }, globalBreadcrumbDisplayIcon) {
+            commit("setGlobalBreadcrumbDisplayIcon", globalBreadcrumbDisplayIcon);
         },
         // 显示重载页面按钮
-        changeShowReloadPageButton({ commit }, showReloadPageButton) {
-            commit("changeShowReloadPageButton", showReloadPageButton);
+        setShowReloadPageButton({ commit }, showReloadPageButton) {
+            commit("setShowReloadPageButton", showReloadPageButton);
         },
         // 开启多页签
-        changeOpenMultipleTabs({ commit }, openMultipleTabs) {
-            commit("changeOpenMultipleTabs", openMultipleTabs);
+        setOpenMultipleTabs({ commit }, openMultipleTabs) {
+            commit("setOpenMultipleTabs", openMultipleTabs);
         },
         // 显示多语言选择
-        changeShowMultilingualSelection({ commit }, showMultilingualSelection) {
-            commit("changeShowMultilingualSelection", showMultilingualSelection);
+        setShowMultilingualSelection({ commit }, showMultilingualSelection) {
+            commit("setShowMultilingualSelection", showMultilingualSelection);
         },
     }
 }
