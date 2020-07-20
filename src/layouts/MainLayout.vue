@@ -9,7 +9,11 @@
         :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
-      <content-bar></content-bar>
+      <content-bar
+        :openMultipleTabs="appconfig.openMultipleTabs"
+        :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
+        :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
+      ></content-bar>
       <footer-bar></footer-bar>
     </a-layout>
 
@@ -26,7 +30,11 @@
       ></header-bar>
       <a-layout>
         <sider-bar :menuMode="appconfig.menuMode" :sideTheme="appconfig.sideTheme"></sider-bar>
-        <content-bar></content-bar>
+        <content-bar
+          :openMultipleTabs="appconfig.openMultipleTabs"
+          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
+          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
+        ></content-bar>
       </a-layout>
       <footer-bar></footer-bar>
     </a-layout>
@@ -43,8 +51,12 @@
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
-        <content-bar></content-bar>
-        <sider-bar></sider-bar>
+        <content-bar
+          :openMultipleTabs="appconfig.openMultipleTabs"
+          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
+          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
+        ></content-bar>
+        <sider-bar :menuMode="appconfig.menuMode" :sideTheme="appconfig.sideTheme"></sider-bar>
       </a-layout>
       <footer-bar></footer-bar>
     </a-layout>
@@ -67,7 +79,11 @@
           :headerTheme="appconfig.headerTheme"
           :displayLogo="appconfig.displayLogo"
         ></header-bar>
-        <content-bar></content-bar>
+        <content-bar
+          :openMultipleTabs="appconfig.openMultipleTabs"
+          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
+          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
+        ></content-bar>
         <footer-bar></footer-bar>
       </a-layout>
     </a-layout>
@@ -91,7 +107,6 @@ export default {
     };
   },
   created() {
-    
     this.appconfig.layout = this.$store.getters.layout;
     this.appconfig.menuColor = this.$store.getters.menuColor;
     this.appconfig.headerTheme = this.$store.getters.headerTheme;
@@ -121,12 +136,11 @@ export default {
 };
 </script>
 <style>
-
 #components-layout-basic .ant-layout-content {
-  background: silver;
+  background: #f0f2f5;
   color: #fff;
-  min-height: 120px;
-  line-height: 120px;
+  /* min-height: 120px;
+  line-height: 120px; */
 }
 
 #components-layout-basic .headerLogo {
@@ -165,7 +179,7 @@ export default {
 .logo {
   width: 35px;
   height: 100%;
-  vertical-align:middle;
+  vertical-align: middle;
   display: inline-block;
 }
 .logo-title {
@@ -174,8 +188,7 @@ export default {
   margin: 0 0 0 12px;
   font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
   font-weight: 600;
-  vertical-align: middle; 
+  vertical-align: middle;
   display: inline-block;
 }
-
 </style>

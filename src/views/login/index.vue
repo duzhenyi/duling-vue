@@ -5,7 +5,7 @@
       <a-form id="form-login" :form="form" class="login-form" @submit="handleSubmit">
         <a-form-item>
           <a-input
-            v-decorator="['account',{ rules: [{ required: true, message: '请输入账号' }] },]"
+            v-decorator="['account',{ initialValue:'admin',rules: [{ required: true, message: '请输入账号' }] },]"
             placeholder="请输入账号"
           >
             <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
@@ -13,7 +13,7 @@
         </a-form-item>
         <a-form-item>
           <a-input-password
-            v-decorator="['password',{ rules: [{ required: true, message: '请输入密码' }] },]"
+            v-decorator="['password',{ initialValue:'123456',rules: [{ required: true, message: '请输入密码' }] },]"
             type="password"
             placeholder="请输入密码"
           >
@@ -64,7 +64,6 @@
 <script>
 // MD5加密
 import md5 from "md5";
-
 // 当我们的组件需要获取多个状态的时候，将这些状态都声明为计算属性会有些重复和冗余，
 // 为了解决这个问题，我们可以使用mapState的辅助函数来帮助我们生成计算属性。
 // mapActions/mapState函数返回的是一个对象，
@@ -76,38 +75,48 @@ export default {
   data() {
     return {
       loginBtnLoading: false,
-      form: this.$form.createForm(this, { name: "normal_login" })
+      form: this.$form.createForm(this, { name: "normal_login" }),
+      redirect: ''
     };
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = (route.query && route.query.redirect)?route.query && route.query.redirect:'/';
+      },
+      immediate: true
+    }
   },
   created() {
     console.log(this.$store);
   },
   methods: {
-    // mapActions 使用方法一 将 this.commonActionGet() 映射为 this.$store.dispatch('commonActionGet')
-    ...mapActions(["RequestLogin"]),
+    // mapActions 将 this.login(values) 映射为 this.$store.dispatch('login',values)
+    ...mapActions(["login"]),
     handleSubmit(e) {
       // 阻止冒泡事件
       e.preventDefault();
-
       // 提交按钮禁用以及刷新状态
       this.loginBtnLoading = true;
-
+      let that = this;
       // 进行form表单验证，查看每个表单项里面的rule
       this.form.validateFields((err, values) => {
-        if (!err) {
+        if (err) {
           console.log("Received values of form: ", values);
         } else {
-          this.form.setField("passwor", md5(values.password));
-          // RequestLogin(values)
-          //   .then(res => {
-          //     console.log(res);
-          //   })
-          //   .catch(err => {
-          //     console.log(res);
-          //   })
-          //   .finally(() => {});
+          values.password = md5(values.password);
+          this.login(values)
+            .then(res => {
+              debugger;
+              that.$router.push({ path: that.redirect }).catch(error => {});
+              that.loginBtnLoading = false;
+            })
+            .catch(err => {
+              this.loginBtnLoading = false;
+              console.log(err);
+            })
+            .finally(() => {});
         }
-        this.loginBtnLoading = false;
       });
     }
   }

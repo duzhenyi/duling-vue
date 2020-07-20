@@ -1,13 +1,11 @@
 <template>
   <div>
-    <p>125
-      d54sdfssssssssssss
-    </p>
+    Home3
   </div>
 </template>
 <script>
 export default {
-  name: "Workplace",
+  name: "Home3",
   components: {},
   data() {
     return {

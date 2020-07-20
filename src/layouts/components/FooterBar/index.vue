@@ -1,5 +1,9 @@
 <template>
-  <a-layout-footer class="footer">©2020 Created by DuLing ADMIN VUE</a-layout-footer>
+  <a-layout-footer class="footer">
+    Copyright
+    <a-icon type="copyright" />2020
+    <span>Powered by DuLing ADMIN VUE</span>
+  </a-layout-footer>
 </template>
 
 <style scoped>

@@ -7,8 +7,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './components/AntDesignCore/antDesignCompents'
-import './global/permission'
-
+import "./router/permission"
+import '../mock/index.js'
 // 全局状态管理器
 import store from "@/store"
 

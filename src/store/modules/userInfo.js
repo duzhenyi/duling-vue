@@ -1,6 +1,11 @@
 import Vue from 'vue'
-import {AccessToken } from '@/global/models'
+import { AccessToken } from '@/global/models'
 import { login, getInfo, logout } from '@/api/login'
+import {
+    getAccessToken,
+    removeAccessToken,
+    setAccessToken
+} from '@/helper/accessToken'
 
 const userInfo = {
     //  存放状态 类似vue data属性
@@ -12,7 +17,7 @@ const userInfo = {
         phone: '',
         avatar: '',
         account: '',
-        token: '',
+        accessToken: '',
         roles: [],
     },
     // 操作state数据的方法的集合，比如对该数据的修改、增加、删除等等，参数一是当前VueX对象中的state，参数二是该方法在被调用时传递参数使用的
@@ -26,8 +31,8 @@ const userInfo = {
             state.account = payLoad.account
             state.roles = payLoad.roles
         },
-        setToken: (state, token) => {
-            if (token) state.token = token
+        setAccessToken: (state, accessToken) => {
+            if (accessToken) state.accessToken = accessToken
         }
     },
     // 异步操作
@@ -39,8 +44,9 @@ const userInfo = {
         async login({ commit }, loginParams) {
             return new Promise((resolve, reject) => {
                 login(loginParams).then(res => {
-                    Vue.ls.set(AccessToken, res.data, 7 * 24 * 60 * 60 * 1000)
-                    commit('setToken', res.data)
+                    commit("setAccessToken", res.data.accessToken);
+                    setAccessToken(res.data.accessToken);
+                    resolve()
                 }).catch(error => {
                     reject(error)
                 })
@@ -57,7 +63,7 @@ const userInfo = {
                 getInfo().then(res => {
                     context.commit('setUerInfo', res)
                     //相当于 this.$store.commit,第一个参数是方法名，第二个参数是要传入的数据
-                    context.dispatch('getToken')
+                    context.dispatch('getAccessToken')
                     //actions也可以调用自己的其他方法
                 })
             })
@@ -68,7 +74,7 @@ const userInfo = {
          */
         async loginOut({ commit, state }) {
             return new Promise((resolve) => {
-                logout(state.token).then(() => {
+                logout(state.accessToken).then(() => {
                     resolve()
                 }).catch(() => {
                     resolve()
@@ -80,5 +86,5 @@ const userInfo = {
         }
     }
 }
- 
+
 export default userInfo

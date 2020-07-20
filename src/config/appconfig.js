@@ -1,6 +1,6 @@
 module.exports = {
   // token存储位置localStorage sessionStorage cookie
-  // Storage: "localStorage",
+  Storage: "localStorage",
   // 横纵布局 水平布局：horizontal 垂直布局：vertical 
   layout: "horizontal",
   // 菜单颜色
@@ -30,7 +30,7 @@ module.exports = {
   // 显示全局面包屑导航 -顶部菜单开启时无效
   showGlobalBreadcrumbNavigation: true,
   // 全局面包屑显示图标 -需开启全局面包屑导航
-  globalBreadcrumbDisplayIcon: false,
+  globalBreadcrumbDisplayIcon: true,
   // 显示重载页面按钮
   showReloadPageButton: false,
   // 开启多页签

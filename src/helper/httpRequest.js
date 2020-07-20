@@ -27,11 +27,11 @@ const error = (error) => {
                 description: 'Authorization verification failed'
             })
             if (token) {
-                // store.dispatch('Logout').then(() => {
-                //     setTimeout(() => {
-                //         window.location.reload()
-                //     }, 1500)
-                // })
+                store.dispatch('Logout').then(() => {
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1500)
+                })
             }
         }
     }
@@ -55,7 +55,7 @@ service.interceptors.request.use((config) => {
 service.interceptors.response.use((response) => {
     const { status, data, config } = response;
     const { code, msg } = data;
-    if (code !== successCode && code !== 0) {
+    if (code !== 200) {
         switch (code) {
             case invalidCode:
                 errorMsg(msg || `后端接口${code}异常`);
@@ -70,10 +70,7 @@ service.interceptors.response.use((response) => {
                 errorMsg(msg || `后端接口${code}异常`);
                 break;
         }
-        return Promise.reject(
-            "vue-admin-beautiful请求异常拦截:" +
-            JSON.stringify({ url: config.url, code, msg }) || "Error"
-        );
+        return Promise.reject("请求异常拦截:" +JSON.stringify({ url: config.url, code, msg }) || "Error");
     } else {
         return data;
     }

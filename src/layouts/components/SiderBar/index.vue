@@ -3,8 +3,10 @@
     <!--logo-->
     <div class="sideLogo" v-if="displayLogo && fixedSideBar">
       <a href="/" class="router-link-active">
-          <img class="logo" src="@/images/logo.png" />
-          <a v-show="!collapsible" ><h1 class="logo-title">Duling ADMIN</h1></a>
+        <img class="logo" src="@/images/logo.png" />
+        <a v-show="!collapsible">
+          <h1 class="logo-title">Duling ADMIN</h1>
+        </a>
       </a>
     </div>
     <!--左侧菜单-->
@@ -14,10 +16,19 @@
       :mode="menuMode"
       :theme="sideTheme"
     >
-      <a-menu-item key="home">
+      <a-sub-menu key="home">
+        <span slot="title">
+          <a-icon type="home" />
+          <span>首页</span>
+        </span>
+        <a-menu-item key="sub1-1"><router-link to="/home1">首页1</router-link></a-menu-item>
+        <a-menu-item key="sub1-2"><router-link to="/home2">首页2</router-link></a-menu-item>
+        <a-menu-item key="sub1-3"><router-link to="/home3">首页3</router-link></a-menu-item>
+      </a-sub-menu>
+      <!-- <a-menu-item key="home">
         <a-icon type="home" />
         <span>首页</span>
-      </a-menu-item>
+      </a-menu-item>-->
 
       <a-sub-menu key="sub1">
         <span slot="title">
@@ -250,11 +261,10 @@ export default {
 };
 </script>
 <style scoped>
-
 /*滚动条的宽度*/
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 0px;
+  height: 0px;
 }
 
 /*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/

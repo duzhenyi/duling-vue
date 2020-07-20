@@ -2,21 +2,44 @@
 //import MainLayout from "../layouts/MainLayout.vue";
 import MainLayout from "@/layouts/MainLayout"
 
-export const routes =
-    // export default   001
+// 路由白名单
+const routerWhites =  ["/login", "/register", "/404", "/401"]
+
+// 基础路由
+const routes =
     [
         {
             path: "/",//浏览器的地址
             name: "Root",
             component: MainLayout,//是路径所对应的组件
-            redirect: '/workplace',
+            redirect: '/home1',
             children: [
                 {
-                    path: "/workplace",
-                    name: "Workplace",
-                    component: () => import('@/views/home/workplace'),
+                    path: "/home1",
+                    name: "Home1",
+                    component: () => import('@/views/home/home1'),
                     meta: {
-                        title: "首页",
+                        title: "首页1",
+                        icon: "home",
+                        affix: true,
+                    },
+                },
+                {
+                    path: "/home2",
+                    name: "Home2",
+                    component: () => import('@/views/home/home2'),
+                    meta: {
+                        title: "首页2",
+                        icon: "home",
+                        affix: true,
+                    },
+                },
+                {
+                    path: "/home3",
+                    name: "Home3",
+                    component: () => import('@/views/home/home3'),
+                    meta: {
+                        title: "首页3",
                         icon: "home",
                         affix: true,
                     },
@@ -25,7 +48,7 @@ export const routes =
         },
         {
             path: '/login',
-            component: () => import('@/views/login')
+            component: () => import('@/views/login'),
         },
         {
             path: '/401',
@@ -40,3 +63,8 @@ export const routes =
             component: () => import('@/views/exception/500')
         }
     ]
+
+export {
+    routerWhites,
+    routes
+}

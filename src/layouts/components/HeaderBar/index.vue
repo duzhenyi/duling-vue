@@ -15,13 +15,14 @@
 
       <a-col :span="col_2_span">
         <!-- 当布局是垂直布局vertical时side存在的时候才会出现-->
-        <span style="margin-right:10px"
+        <span
+          style="margin-right:10px"
           v-if="layout==='horizontal'"
           :class="headerTheme=== 'light' ? 'trigger' : 'trigger theme-color'"
         >
           <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="displaySideMenuClick" />
         </span>
- 
+
         <!-- 当水平布局的时候 side菜单显示到这里-->
         <a-menu
           v-if="layout==='vertical'"
@@ -30,10 +31,20 @@
           :theme="headerTheme"
           :style="{ lineHeight: '64px' }"
         >
+          <a-sub-menu key="home">
+            <span slot="title">
+              <a-icon type="home" />
+              <span>首页</span>
+            </span>
+            <a-menu-item key="sub1-1">首页1</a-menu-item>
+            <a-menu-item key="sub1-2">首页2</a-menu-item>
+            <a-menu-item key="sub1-3">首页3</a-menu-item>
+          </a-sub-menu>
+          <!-- 
           <a-menu-item key="home">
             <a-icon type="home" />
             <span>首页</span>
-          </a-menu-item>
+          </a-menu-item>-->
 
           <a-sub-menu key="sub1">
             <span slot="title">
@@ -216,7 +227,7 @@
         </a-menu>
 
         <!--垂直布局的时候，顶部快捷菜单-->
-         <a-menu 
+        <a-menu
           v-if="layout==='horizontal'"
           :theme="headerTheme"
           mode="horizontal"
