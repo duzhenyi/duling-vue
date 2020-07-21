@@ -22,7 +22,6 @@ router.beforeResolve(async (to, from, next) => {
     console.log(to)
     console.log(from)
     console.log('********************************************************')
-    debugger
     // 获取token
     // let token = store.getters["userInfo/accessToken"];
     let token = getAccessToken(AccessToken);

@@ -135,12 +135,10 @@ export default {
   updated() {}
 };
 </script>
-<style>
-#components-layout-basic .ant-layout-content {
+<style lang="less">
+ .ant-layout-content {
   background: #f0f2f5;
-  color: #fff;
-  /* min-height: 120px;
-  line-height: 120px; */
+  color: #ffff;
 }
 
 #components-layout-basic .headerLogo {
@@ -183,12 +181,16 @@ export default {
   display: inline-block;
 }
 .logo-title {
-  color: #fff;
+  color: #ffff;
   font-size: 16px;
   margin: 0 0 0 12px;
   font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
   font-weight: 600;
   vertical-align: middle;
   display: inline-block;
+}
+#components-layout-basic .ant-tabs-bar {
+  margin: 0;
+  border-bottom: 0px;
 }
 </style>

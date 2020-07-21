@@ -256,7 +256,9 @@
           <!--git地址-->
           <span class="tool theme-color">
             <a-tooltip placement="bottom">
-              <template slot="title">git地址</template>
+              <template slot="title">
+                <a href target="_blank">Git地址</a>
+              </template>
               <a-icon type="github" :style="{ fontSize: '18px' }" />
             </a-tooltip>
           </span>
@@ -511,7 +513,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .header {
-  background: "#fff";
+  background: "#ffff";
   padding: 0;
   .header_Logo {
     height: 31px;
@@ -540,7 +542,7 @@ export default {
       outline: none;
       border: none;
       background: transparent;
-      color: #fff;
+      color: #ffff;
     }
 
     .tool:hover {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+ <div style="padding:10px">
    Home2
   </div>
 </template>

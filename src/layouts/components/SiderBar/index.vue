@@ -290,6 +290,6 @@ export default {
 /*滚动条移上去的背景*/
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #fff;
+  background-color: #ffff;
 }
 </style>

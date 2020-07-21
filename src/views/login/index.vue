@@ -144,7 +144,7 @@ export default {
   border-radius: 5px;
   -webkit-box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.4);
   box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.4);
-  background: #fff;
+  background: #ffff;
 }
 
 #form-login .login-form {
