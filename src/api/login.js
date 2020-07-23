@@ -1,34 +1,45 @@
 import httpRequest from "@/helper/httpRequest";
 import { encryptedData } from "@/helper/encrypt";
 const loginRSA = false
-export async function login(data) {
+
+export function login(params) {
     if (loginRSA) {
-        data = await encryptedData(data);
+        params = encryptedData(params);
     }
     return httpRequest({
         url: "/login",
         method: "post",
-        data,
+        params
     });
 }
 
-export async function getInfo(data) {
+export function getUserInfo() {
     if (loginRSA) {
-        data = await encryptedData(data);
+        params = encryptedData();
     }
     return httpRequest({
-        url: "/login",
-        method: "post",
-        data,
+        url: "/getuserinfo",
+        method: "post"
     });
 }
-export async function logout(data) {
+export function logout(params) {
     if (loginRSA) {
-        data = await encryptedData(data);
+        params = encryptedData(params);
     }
     return httpRequest({
-        url: "/login",
+        url: "/logout",
         method: "post",
-        data,
+        params
+    });
+}
+
+export function getNavRouters(params) {
+    if (loginRSA) {
+        params = encryptedData(params);
+    }
+    return httpRequest({
+        url: "/getNavRouters",
+        method: "post",
+        params
     });
 }

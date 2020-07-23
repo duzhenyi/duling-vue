@@ -1,2 +1,3 @@
 import MainLayout from './MainLayout'
-export { MainLayout }
+import EmptyLayout from './MainLayout'
+export { MainLayout, EmptyLayout }

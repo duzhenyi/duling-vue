@@ -77,7 +77,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({ route: "route/cachedRoutes" }),
+    ...mapGetters({ route: "cachedRoutes" }),
     routeKey() {
       // 绑定当前页面的路由地址
       return this.$route.path;
@@ -140,14 +140,9 @@ export default {
 </script>
 <style lang="less" scope>
 /* 导航面包背景颜色 下面2种都可以 */
-// .ant-breadcrumb {
-//   background: #ffff !important;
-//   padding: 10px !important;
-// }
-
-.ant-layout-content /deep/ .ant-breadcrumb {
-  background: #ffff;
-  padding: 10px;
+.ant-layout-content .ant-breadcrumb {
+  background: #ffff !important;
+  padding: 10px !important;
 }
 
 /* tabs字体 */

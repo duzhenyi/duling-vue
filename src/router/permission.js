@@ -4,7 +4,7 @@
 
 import store from '@/store'
 import router from '@/router'
-import { routes, routerWhites } from './router.config'
+import { routerWhites } from './routerConfig'
 import { AccessToken } from '@/global/models'
 import { getAccessToken } from '@/helper/accessToken'
 /**
@@ -18,12 +18,12 @@ import { getAccessToken } from '@/helper/accessToken'
  * 确保要调用 next 方法，否则钩子就不会被 resolved
  */
 router.beforeResolve(async (to, from, next) => {
-    console.log('********************************************************')
-    console.log(to)
-    console.log(from)
-    console.log('********************************************************')
+    
+    // console.log('********************************************************')
+    // console.log(to)
+    // console.log(from)
+    // console.log('********************************************************')
     // 获取token
-    // let token = store.getters["userInfo/accessToken"];
     let token = getAccessToken(AccessToken);
     // token存在
     if (token) {
@@ -32,12 +32,24 @@ router.beforeResolve(async (to, from, next) => {
             next({ path: "/" })
             // next({ path: defaultRoutePath })
         } else {
-            if (routes.length === 0) {
-                // 添加路由数据到路由表
-                router.addRoutes(routes);
-                next({ ...to, replace: true });
-            } else {
+            const roles = store.getters.roles
+            if (roles.length > 0) {
                 next()
+            } else {
+                store.dispatch("getUserInfo").then((res) => {
+                    const roles = res.code === 200 && res.data.roles
+                    store.dispatch("getNavRouters",roles).then((routes) => {
+                        // 添加路由数据到路由表
+                        router.addRoutes(routes);
+                        next({ ...to, replace: true });
+                    })
+                }).catch(() => {
+                    
+                    // notification.error({ message: '错误', description: '请求用户信息失败，请重试' })
+                    store.dispatch('logout').then(() => {
+                        next({ path: '/login', query: { redirect: to.fullPath } })
+                    })
+                });
             }
         }
     } else {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { AccessToken } from '@/global/models'
-import { login, getInfo, logout } from '@/api/login'
+import { login, getUserInfo, logout } from '@/api/login'
 import {
     getAccessToken,
     removeAccessToken,
@@ -35,15 +35,21 @@ const userInfo = {
             if (accessToken) state.accessToken = accessToken
         }
     },
+    getters: {
+        roles(state) {
+            return state.roles
+        },
+    },
     // 异步操作
     actions: {
         /**
          * 登录，获取令牌
          * @param {} param0 
          */
-        async login({ commit }, loginParams) {
+        async login({ commit }, params) {
             return new Promise((resolve, reject) => {
-                login(loginParams).then(res => {
+                login(params).then(res => {
+                    // 记录token
                     commit("setAccessToken", res.data.accessToken);
                     setAccessToken(res.data.accessToken);
                     resolve()
@@ -60,11 +66,10 @@ const userInfo = {
          */
         async getUserInfo(context) {
             return new Promise((resolve, reject) => {
-                getInfo().then(res => {
-                    context.commit('setUerInfo', res)
-                    //相当于 this.$store.commit,第一个参数是方法名，第二个参数是要传入的数据
-                    context.dispatch('getAccessToken')
-                    //actions也可以调用自己的其他方法
+                getUserInfo().then(res => {
+                     //相当于 this.$store.commit,第一个参数是方法名，第二个参数是要传入的数据
+                    context.commit('setUerInfo', res.data) 
+                    resolve(res)
                 })
             })
         },
@@ -81,7 +86,7 @@ const userInfo = {
                     resolve()
                 }).finally(() => {
                     commit('setToken', '')
-                    Vue.ls.remove(AccessToken)
+                    removeAccessToken(AccessToken);
                 })
             })
         }

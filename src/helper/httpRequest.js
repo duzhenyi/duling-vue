@@ -7,11 +7,12 @@ const service = axios.create({
     baseURL: process.env.BASE_API,
     timeout: '30',
     headers: {
-        "Content-Type": 'json',
-    },
+        'Content-Type': 'application/json;charset=UTF-8'
+    }
 });
 
 const error = (error) => {
+    debugger
     if (error.response) {
         const data = error.response.data
         const token = store.getters[AccessToken]
@@ -41,10 +42,10 @@ const error = (error) => {
  * http request 
  */
 service.interceptors.request.use((config) => {
+    // debugger
     if (store.getters[AccessToken]) {
         config.headers['Authorization'] = store.getters[AccessToken];
     }
-
     return config;
 }, error)
 
@@ -53,6 +54,7 @@ service.interceptors.request.use((config) => {
  *  http response 
  */
 service.interceptors.response.use((response) => {
+    // debugger
     const { status, data, config } = response;
     const { code, msg } = data;
     if (code !== 200) {

@@ -10,7 +10,7 @@
       </a>
     </div>
     <!--左侧菜单-->
-    <a-menu
+    <!-- <a-menu
       :style="{'scrollbar-track-color':'#f629b9','overflow-y': 'auto', height: 'calc(100vh - 64px)'}"
       :default-selected-keys="['home']"
       :mode="menuMode"
@@ -21,15 +21,16 @@
           <a-icon type="home" />
           <span>首页</span>
         </span>
-        <a-menu-item key="sub1-1"><router-link to="/home1">首页1</router-link></a-menu-item>
-        <a-menu-item key="sub1-2"><router-link to="/home2">首页2</router-link></a-menu-item>
-        <a-menu-item key="sub1-3"><router-link to="/home3">首页3</router-link></a-menu-item>
+        <a-menu-item key="sub1-1">
+          <router-link to="/home1">首页1</router-link>
+        </a-menu-item>
+        <a-menu-item key="sub1-2">
+          <router-link to="/home2">首页2</router-link>
+        </a-menu-item>
+        <a-menu-item key="sub1-3">
+          <router-link to="/home3">首页3</router-link>
+        </a-menu-item>
       </a-sub-menu>
-      <!-- <a-menu-item key="home">
-        <a-icon type="home" />
-        <span>首页</span>
-      </a-menu-item>-->
-
       <a-sub-menu key="sub1">
         <span slot="title">
           <a-icon type="user" />
@@ -39,7 +40,6 @@
         <a-menu-item key="sub1-2">平台用户</a-menu-item>
         <a-menu-item key="sub1-3">小黑屋</a-menu-item>
       </a-sub-menu>
-
       <a-sub-menu key="sub2">
         <span slot="title">
           <a-icon type="shop" />
@@ -208,12 +208,23 @@
         <a-menu-item key="sub19-2">关键字过滤</a-menu-item>
         <a-menu-item key="sub19-3">IP限制</a-menu-item>
       </a-sub-menu>
-    </a-menu>
+    </a-menu>-->
+    <nav-bar
+      :navStyle="{'scrollbar-track-color':'#f629b9','overflow-y': 'auto', height: 'calc(100vh - 64px)'}"
+      :default-selected-keys="['home']"
+      :mode="menuMode"
+      :theme="sideTheme"
+      :menus="menus"
+    ></nav-bar>
   </a-layout-sider>
 </template>
 <script>
 import Bus from "../bus";
+import NavBar from "_c/NavBar";
 export default {
+  components: {
+    NavBar
+  },
   data() {
     return {
       collapsible: false
@@ -224,6 +235,15 @@ export default {
     Bus.$on("displaySideMenu", val => {
       this.collapsible = val;
     });
+  },
+  watch: {
+    // 监听路由变化
+    //$route.path == this.$route.path
+    "$route.path": function(newVal, oldVal) {
+      debugger;
+      console.log(newVal);
+      console.log(oldVal);
+    }
   },
   methods: {},
   props: {
@@ -256,6 +276,10 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    menus: {
+      type: Array,
+      required: true
     }
   }
 };

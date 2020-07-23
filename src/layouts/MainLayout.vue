@@ -29,7 +29,14 @@
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
-        <sider-bar :menuMode="appconfig.menuMode" :sideTheme="appconfig.sideTheme"></sider-bar>
+        <sider-bar
+          :menuMode="appconfig.menuMode"
+          :sideTheme="appconfig.sideTheme"
+          :fixedSideBar="appconfig.fixedSideBar"
+          :displayLogo="appconfig.displayLogo"
+          :layout="appconfig.layout"
+          :menus="menus"
+        ></sider-bar>
         <content-bar
           :openMultipleTabs="appconfig.openMultipleTabs"
           :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
@@ -56,7 +63,15 @@
           :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
           :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
         ></content-bar>
-        <sider-bar :menuMode="appconfig.menuMode" :sideTheme="appconfig.sideTheme"></sider-bar>
+
+        <sider-bar
+          :menuMode="appconfig.menuMode"
+          :sideTheme="appconfig.sideTheme"
+          :fixedSideBar="appconfig.fixedSideBar"
+          :displayLogo="appconfig.displayLogo"
+          :layout="appconfig.layout"
+          :menus="menus"
+        ></sider-bar>
       </a-layout>
       <footer-bar></footer-bar>
     </a-layout>
@@ -69,6 +84,7 @@
         :fixedSideBar="appconfig.fixedSideBar"
         :displayLogo="appconfig.displayLogo"
         :layout="appconfig.layout"
+        :menus="menus"
       ></sider-bar>
       <a-layout>
         <header-bar
@@ -92,6 +108,7 @@
 
 <script>
 import appconfig from "@/config/appconfig";
+import { mapState } from "vuex";
 import { HeaderBar, SiderBar, ContentBar, FooterBar } from "./components";
 export default {
   name: "MainLayout",
@@ -103,10 +120,19 @@ export default {
   },
   data() {
     return {
-      appconfig: appconfig
+      appconfig: appconfig,
+      menus: []
     };
   },
+  computed: {
+    // 动态主路由
+    // ...mapState({ cachedRoutes: state => state.route.cachedRoutes })
+  },
   created() {
+    console.log("2. created");
+    this.menus = this.$store.getters.navRoutes;
+    console.log(this.menus);
+
     this.appconfig.layout = this.$store.getters.layout;
     this.appconfig.menuColor = this.$store.getters.menuColor;
     this.appconfig.headerTheme = this.$store.getters.headerTheme;
@@ -126,17 +152,26 @@ export default {
     this.appconfig.showMultilingualSelection = this.$store.getters.showMultilingualSelection;
   },
   methods: {},
-  computed: {},
   watch: {},
-  beforeCreate() {},
-  beforeMount() {},
-  mounted() {},
-  beforeUpdate() {},
-  updated() {}
+  beforeCreate() {
+    console.log("1.beforeCreate");
+  },
+  beforeMount() {
+    console.log("3.beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated");
+  }
 };
 </script>
 <style lang="less">
- .ant-layout-content {
+.ant-layout-content {
   background: #f0f2f5;
   color: #ffff;
 }
