@@ -69,7 +69,8 @@ export const generator = (data, parentRoute) => {
             meta: {
                 title: item.title,
                 icon: item.icon || undefined,
-                target: item.target
+                target: item.target,
+                key: item.key
             }
         }
         // 为了防止出现后端返回结果不规范，处理有可能出现拼接出两个 反斜杠

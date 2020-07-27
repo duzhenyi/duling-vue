@@ -9,7 +9,13 @@
       @edit="onEdit"
       @change="tabChange"
     >
-      <a-tab-pane v-for="pane in panes" :key="pane.key" :tab="pane.title" :closable="pane.closable">
+      <a-tab-pane
+        :forceRender="false"
+        v-for="pane in panes"
+        :key="pane.key"
+        :tab="pane.title"
+        :closable="pane.closable"
+      >
         <!-- 面包导航 -->
         <a-breadcrumb v-show="showGlobalBreadcrumbNavigation">
           <a-breadcrumb-item>
@@ -50,7 +56,7 @@
     </a-tabs>
 
     <!--将需要缓存的视图用keep-alive包裹-->
-    <keep-alive :include="route" :max="10">
+    <keep-alive :include="routeStore" :max="10">
       <router-view
         :key="routeKey"
         :style="{ color:'black', padding:'10px', background: '#fff', minHeight: '360px' }"
@@ -59,34 +65,45 @@
   </a-layout-content>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       // 当前选中的tab页
-      activeKey: "/home1",
-      panes: [
-        {
-          key: "/home1",
-          title: "首页1",
-          closable: false // 禁止关闭
-        },
-        { key: "/home2", title: "首页2" },
-        { key: "/home3", title: "首页3" }
-      ]
+      activeKey: "",
+      panes: [],
     };
   },
+  watch: {
+    // 监听路由变化
+    "$route.path": function (newVal, oldVal) {
+      this.activeKey = newVal;
+    },
+  },
   computed: {
-    ...mapGetters({ route: "cachedRoutes" }),
+    ...mapGetters({
+      routeStore: "cachedRoutes",
+      paneStore: "getPanes",
+      paneActiveKey: "getActiveKey",
+    }),
     routeKey() {
       // 绑定当前页面的路由地址
       return this.$route.path;
-    }
+    },
+  },
+  created() {
+    console.log("this.openMultipleTabs:");
+    console.log(this.openMultipleTabs);
+    debugger;
+    this.activeKey = this.paneActiveKey;
+    this.panes = this.paneStore;
   },
   methods: {
+    ...mapActions(["setActiveKey"]),
     tabChange(key) {
+      this.setActiveKey(key);
       // tab页签切换后跳转路径
-      this.$router.push({ path: key }).catch(error => {});
+      this.$router.push({ path: key }).catch((error) => {});
     },
     onEdit(targetKey, action) {
       // 删除tab页签
@@ -100,7 +117,7 @@ export default {
           lastIndex = i - 1;
         }
       });
-      const panes = this.panes.filter(pane => pane.key !== targetKey);
+      const panes = this.panes.filter((pane) => pane.key !== targetKey);
       if (panes.length && activeKey === targetKey) {
         if (lastIndex >= 0) {
           activeKey = panes[lastIndex].key;
@@ -110,32 +127,28 @@ export default {
       }
       this.panes = panes;
       this.activeKey = activeKey;
-    }
-  },
-  created() {
-    console.log("this.openMultipleTabs:");
-    console.log(this.openMultipleTabs);
+    },
   },
   props: {
     // 多标签页
     openMultipleTabs: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     // 显示全局面包屑导航
     showGlobalBreadcrumbNavigation: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     // 显示全局面包屑导航图标
     globalBreadcrumbDisplayIcon: {
       type: Boolean,
       required: false,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 <style lang="less" scope>

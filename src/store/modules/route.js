@@ -1,4 +1,4 @@
-import { defaultRoutes,generatorDynamicRouter } from '@/router/routerConfig'
+import { defaultRoutes, generatorDynamicRouter } from '@/router/routerConfig'
 import { getNavRouters } from '@/api/login'
 const route = {
     state: {
@@ -7,12 +7,12 @@ const route = {
     },
     getters: {
         cachedRoutes: (state) => state.cachedRoutes,
-        navRoutes: (state) => state.navRoutes,
+        navRoutes: (state) => state.navRoutes,        
     },
     mutations: {
-        setNavRoutes(state, data) { 
+        setNavRoutes(state, data) {
             state.navRoutes = data
-            state.cachedRoutes =[]
+            state.cachedRoutes = []
             state.cachedRoutes.push(data);
             state.cachedRoutes.push(defaultRoutes);
         }

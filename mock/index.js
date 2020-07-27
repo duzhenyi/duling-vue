@@ -23,7 +23,6 @@ const userInfo = {
         roles: ['admin']
     }
 }
-
 const navRouters = {
     code: 200,
     msg: '',
@@ -205,8 +204,8 @@ const navRouters = {
             title: '留言管理',
             name: 'Message',
             icon: 'message',
-            path: '/',
-            component: 'message/message1',
+            path: 'message/message1',
+            component: 'EmptyLayout',
             redirect: '',
             target: '',
             children: []
