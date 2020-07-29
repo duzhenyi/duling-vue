@@ -48,7 +48,6 @@ export default {
   },
   computed: {
     rootSubmenuKeys: (vm) => {
-      debugger;
       const keys = [];
       vm.menus.forEach((item) => keys.push(item.path));
       return keys;
@@ -64,9 +63,8 @@ export default {
   methods: {
     ...mapActions(["addPane", "setActiveKey"]),
     ...mapGetters({ paneStore: "getPanes", navRoutes: "navRoutes" }),
-    // select menu item
+    // SubMenu 展开/关闭的回调
     openChange(openKeys) {
-      debugger;
       // 在水平模式下时执行，并且不再执行后续
       if (this.mode === "horizontal") {
         this.openKeys = openKeys;
@@ -84,6 +82,7 @@ export default {
     },
     // 菜单选中时调用
     onSelect({ item, key, selectedKeys }) {
+      debugger
       this.selectedKeys = selectedKeys;
       let nav = this.getRouteByKey(this.navRoutes(), selectedKeys[0], []);
       // 添加一个pane到vuex里面，如果存在则不添加，则选中

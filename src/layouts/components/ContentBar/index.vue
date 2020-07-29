@@ -94,12 +94,12 @@ export default {
   created() {
     console.log("this.openMultipleTabs:");
     console.log(this.openMultipleTabs);
-    debugger;
+    
     this.activeKey = this.paneActiveKey;
     this.panes = this.paneStore;
   },
   methods: {
-    ...mapActions(["setActiveKey"]),
+    ...mapActions(["setActiveKey", "delPane"]),
     tabChange(key) {
       this.setActiveKey(key);
       // tab页签切换后跳转路径
@@ -117,16 +117,21 @@ export default {
           lastIndex = i - 1;
         }
       });
-      const panes = this.panes.filter((pane) => pane.key !== targetKey);
-      if (panes.length && activeKey === targetKey) {
+      const otherPanes = this.panes.filter((pane) => pane.key !== targetKey);
+      if (otherPanes.length && activeKey === targetKey) {
         if (lastIndex >= 0) {
-          activeKey = panes[lastIndex].key;
+          activeKey = otherPanes[lastIndex].key;
+          this.setActiveKey(otherPanes[lastIndex].key);
         } else {
-          activeKey = panes[0].key;
+          activeKey = otherPanes[0].key;
+          this.setActiveKey(otherPanes[0].key);
         }
       }
-      this.panes = panes;
-      this.activeKey = activeKey;
+      const delPane = this.panes.filter((pane) => pane.key === targetKey);
+      this.delPane(delPane[0]);
+      this.panes = this.paneStore;
+      this.activeKey = this.paneActiveKey;
+      this.$router.push({ path: activeKey }).catch((error) => {});
     },
   },
   props: {

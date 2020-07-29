@@ -29,6 +29,7 @@ const paneStore = {
          * @param {要添加的pane} pane 
          */
         addPane: (state, pane) => {
+            debugger
             let result = state.panes.some(item => {
                 if (item.key === pane.key) {
                     return true;
@@ -44,13 +45,13 @@ const paneStore = {
          * @param {当前状态属性} state 
          * @param {要删除的pane} pane 
          */
-        delPane: (state, pane) => {
+        delPane: (state, pane) => { 
             for (const [i, v] of state.panes.entries()) {
-                if (v.path === pane.path) {
+                if (v.key === pane.key) {
                     state.panes.splice(i, 1);
                     break;
                 }
-            }
+            } 
         },
         /**
          * 删除其他pane
