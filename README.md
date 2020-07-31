@@ -5,9 +5,9 @@
 参考图片：
 
 
-![image-20200731141732706](https://github.com/duzhenyi/duling-vue/tree/master/doc/image-20200731141712441.png)
+![image text](https://github.com/duzhenyi/duling-vue/tree/master/doc/image-20200731141712441.png)
 
-![image-20200731141732706](https://github.com/duzhenyi/duling-vue/tree/master/doc/image-20200731141732706.png)
+![image text](https://github.com/duzhenyi/duling-vue/tree/master/doc/image-20200731141732706.png)
 =======
 ## Project setup
 
