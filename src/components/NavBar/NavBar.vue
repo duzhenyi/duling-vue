@@ -9,6 +9,7 @@
     :selected-keys="selectedKeys"
     @select="onSelect"
     @openChange="openChange"
+    @click="onClick"
   >
     <template v-for="item in menus">
       <a-menu-item
@@ -16,7 +17,7 @@
         :key="item.key"
         :class="[item.isActive && 'router-link-active', item.isExactActive && 'router-link-exact-active']"
       >
-        <router-link :to="item.path">
+        <router-link class="nav-link" :to="item.path">
           <a-icon :type="item.icon" />
           <span>{{ item.title }}</span>
         </router-link>
@@ -82,9 +83,15 @@ export default {
     },
     // 菜单选中时调用
     onSelect({ item, key, selectedKeys }) {
-      debugger
-      this.selectedKeys = selectedKeys;
-      let nav = this.getRouteByKey(this.navRoutes(), selectedKeys[0], []);
+      let nav = this.getRouteByKey(this.navRoutes(), this.selectedKeys[0], []);
+      // 添加一个pane到vuex里面，如果存在则不添加，则选中
+      this.addPane({
+        key: nav.path,
+        title: nav.title,
+      });
+    },
+    onClick({ item, key, selectedKeys }) {
+      let nav = this.getRouteByKey(this.navRoutes(), this.selectedKeys[0], []);
       // 添加一个pane到vuex里面，如果存在则不添加，则选中
       this.addPane({
         key: nav.path,
@@ -118,7 +125,6 @@ export default {
       }
     },
     loadNav() {
-      debugger;
       this.selectedKeys = [this.$route.meta.key];
       const openKeys = [];
       if (this.mode === "inline") {
@@ -136,7 +142,12 @@ export default {
         : (this.openKeys = openKeys);
     },
   },
-  created() {},
+  created() {
+    this.addPane({
+      key: this.$route.path,
+      title: this.$route.meta.title,
+    });
+  },
   props: {
     navStyle: {
       type: Object,
@@ -170,6 +181,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.nav-link {
+  cursor: pointer;
+}
 </style>
 
  

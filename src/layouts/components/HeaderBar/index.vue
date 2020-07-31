@@ -466,14 +466,12 @@ export default {
     },
     //退出系统
     logoOut() {
-      debugger;
       let that = this;
       this.loginOut()
         .then(res => {
           that.$router.push({ path: "/login" }).catch(error => {});
         })
         .catch(err => {
-          console.log(err);
         })
         .finally(() => {});
     }

@@ -236,15 +236,6 @@ export default {
       this.collapsible = val;
     });
   },
-  // watch: {
-  //   // 监听路由变化
-  //   //$route.path == this.$route.path
-  //   "$route.path": function(newVal, oldVal) {
-  //     debugger;
-  //     console.log(newVal);
-  //     console.log(oldVal);
-  //   }
-  // },
   methods: {},
   props: {
     //左中右布局，固定左侧side

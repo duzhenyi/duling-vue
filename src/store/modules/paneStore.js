@@ -29,7 +29,6 @@ const paneStore = {
          * @param {要添加的pane} pane 
          */
         addPane: (state, pane) => {
-            debugger
             let result = state.panes.some(item => {
                 if (item.key === pane.key) {
                     return true;

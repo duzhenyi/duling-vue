@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-06-10 22:59:59
+ * @LastEditTime: 2020-07-31 14:03:32
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \admin\duling-vue\src\router\permission.js
+ */ 
 /**
  * 全局路由守卫，所有请求都会经过这里进行路由验证
  */
@@ -19,10 +27,6 @@ import { getAccessToken } from '@/helper/accessToken'
  */
 router.beforeResolve(async (to, from, next) => {
     
-    // console.log('********************************************************')
-    // console.log(to)
-    // console.log(from)
-    // console.log('********************************************************')
     // 获取token
     let token = getAccessToken(AccessToken);
     // token存在

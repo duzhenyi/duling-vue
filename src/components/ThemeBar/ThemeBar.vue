@@ -201,16 +201,12 @@ export default {
     this.form.showReloadPageButton = this.$store.getters.showReloadPageButton;
     this.form.openMultipleTabs = this.$store.getters.openMultipleTabs;
     this.form.showMultilingualSelection = this.$store.getters.showMultilingualSelection;
-
-    console.log("cacheTheme2:", this.form);
   },
   methods: {
     //颜色组件选择颜色后
     selectColorFun(val) {
-      console.log("selectColorFun", val);
     },
     afterVisibleChange(val) {
-      console.log("afterVisibleChange-visible", val);
     },
     onSubmit() {
       localStorage.setItem(

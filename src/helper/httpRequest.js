@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-06-29 22:12:41
+ * @LastEditTime: 2020-07-31 14:02:00
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \admin\duling-vue\src\helper\httpRequest.js
+ */ 
 import axios from "axios";
 import store from "@/store";
 import router from "@/router";
@@ -12,7 +20,6 @@ const service = axios.create({
 });
 
 const error = (error) => {
-    debugger
     if (error.response) {
         const data = error.response.data
         const token = store.getters[AccessToken]
@@ -42,7 +49,6 @@ const error = (error) => {
  * http request 
  */
 service.interceptors.request.use((config) => {
-    // debugger
     if (store.getters[AccessToken]) {
         config.headers['Authorization'] = store.getters[AccessToken];
     }
@@ -54,7 +60,6 @@ service.interceptors.request.use((config) => {
  *  http response 
  */
 service.interceptors.response.use((response) => {
-    // debugger
     const { status, data, config } = response;
     const { code, msg } = data;
     if (code !== 200) {

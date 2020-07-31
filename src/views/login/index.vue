@@ -76,20 +76,21 @@ export default {
     return {
       loginBtnLoading: false,
       form: this.$form.createForm(this, { name: "normal_login" }),
-      redirect: ''
+      redirect: "",
     };
   },
   watch: {
     $route: {
-      handler: function(route) {
-        this.redirect = (route.query && route.query.redirect)?route.query && route.query.redirect:'/';
+      handler: function (route) {
+        this.redirect =
+          route.query && route.query.redirect
+            ? route.query && route.query.redirect
+            : "/";
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
-  created() {
-    console.log(this.$store);
-  },
+  created() {},
   methods: {
     // mapActions 将 this.login(values) 映射为 this.$store.dispatch('login',values)
     ...mapActions(["login"]),
@@ -102,23 +103,22 @@ export default {
       // 进行form表单验证，查看每个表单项里面的rule
       this.form.validateFields((err, values) => {
         if (err) {
-          console.log("Received values of form: ", values);
+          this.alert("Received values of form: ", values);
         } else {
           values.password = md5(values.password);
           this.login(values)
-            .then(res => {
-              that.$router.push({ path: that.redirect }).catch(error => {});
+            .then((res) => {
+              that.$router.push({ path: that.redirect }).catch((error) => {});
               that.loginBtnLoading = false;
             })
-            .catch(err => {
+            .catch((err) => {
               this.loginBtnLoading = false;
-              console.log(err);
             })
             .finally(() => {});
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

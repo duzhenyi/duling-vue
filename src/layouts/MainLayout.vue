@@ -129,10 +129,7 @@ export default {
     // ...mapState({ cachedRoutes: state => state.route.cachedRoutes })
   },
   created() {
-    console.log("2. created");
     this.menus = this.$store.getters.navRoutes;
-    console.log(this.menus);
-
     this.appconfig.layout = this.$store.getters.layout;
     this.appconfig.menuColor = this.$store.getters.menuColor;
     this.appconfig.headerTheme = this.$store.getters.headerTheme;
@@ -154,19 +151,14 @@ export default {
   methods: {},
   watch: {},
   beforeCreate() {
-    console.log("1.beforeCreate");
   },
   beforeMount() {
-    console.log("3.beforeMount");
   },
   mounted() {
-    console.log("mounted");
   },
   beforeUpdate() {
-    console.log("beforeUpdate");
   },
   updated() {
-    console.log("updated");
   }
 };
 </script>

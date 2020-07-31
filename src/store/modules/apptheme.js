@@ -4,7 +4,6 @@
  */
 import appconfig from "@/config/appconfig"
 const cacheTheme = JSON.parse(localStorage.getItem("Duling-VUE-THEME")) || "";
-// console.log('cacheTheme:', cacheTheme)
 const apptheme = {
     // 需要在state中定义变量，类似于vue中的data，通过state来存放状态
     state: {
@@ -49,7 +48,6 @@ const apptheme = {
     getters: {
         // 横纵布局 水平布局：horizontal 垂直布局：vertical 
         layout(state) {
-            //console.log(state)
             return state.layout
         },
         menuColor(state) {

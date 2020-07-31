@@ -92,9 +92,6 @@ export default {
     },
   },
   created() {
-    console.log("this.openMultipleTabs:");
-    console.log(this.openMultipleTabs);
-    
     this.activeKey = this.paneActiveKey;
     this.panes = this.paneStore;
   },
