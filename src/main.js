@@ -1,3 +1,4 @@
+
 /**
  * ../ 上一级目录
  * /   项目根目录
@@ -6,9 +7,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './components/AntDesignCore/antDesignCompents'
+import './components/AntDesignCore/AntDesignCompents' 
 import "./router/permission"
 import '../mock/index.js'
+
+// import echarts  from 'echarts'
+// Vue.prototype.$echarts = echarts;
+
 // 全局状态管理器
 import store from "@/store"
 

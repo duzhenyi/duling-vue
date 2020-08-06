@@ -90,8 +90,8 @@ export default {
         title: nav.title,
       });
     },
-    onClick({ item, key, selectedKeys }) {
-      let nav = this.getRouteByKey(this.navRoutes(), this.selectedKeys[0], []);
+    onClick({ item, key }) {
+      let nav = this.getRouteByKey(this.navRoutes(), key, []);
       // 添加一个pane到vuex里面，如果存在则不添加，则选中
       this.addPane({
         key: nav.path,

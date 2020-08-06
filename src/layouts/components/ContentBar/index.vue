@@ -1,5 +1,5 @@
 <template>
-  <a-layout-content :style="{ margin: '5px 5px 0' }">
+  <a-layout-content :style="{ margin: '5px 5px 0'  }">
     <!-- 多标签页 -->
     <a-tabs
       v-if="openMultipleTabs"
@@ -59,9 +59,10 @@
     <keep-alive :include="routeStore" :max="10">
       <router-view
         :key="routeKey"
-        :style="{ color:'black', padding:'10px', background: '#fff', minHeight: '360px' }"
+        :style="{ color:'black', padding:'10px', background: '#fff', minHeight: '360px','overflow-y': 'auto', height: 'calc(100vh - 64px)' }"
       ></router-view>
     </keep-alive>
+    <a-back-top />
   </a-layout-content>
 </template>
 <script>
@@ -156,7 +157,7 @@ export default {
 <style lang="less" scope>
 /* 导航面包背景颜色 下面2种都可以 */
 .ant-layout-content .ant-breadcrumb {
-  background: #ffff !important;
+  background: #edf2ee  !important;
   padding: 10px !important;
 }
 

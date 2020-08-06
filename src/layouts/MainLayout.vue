@@ -220,4 +220,38 @@ export default {
   margin: 0;
   border-bottom: 0px;
 }
+
+
+
+/*滚动条的宽度*/
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background-color: #0d1b20;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/*滚动条的设置*/
+
+::-webkit-scrollbar-thumb {
+  background-color: #606d71;
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+/*滚动条移上去的背景*/
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffff;
+}
 </style>
