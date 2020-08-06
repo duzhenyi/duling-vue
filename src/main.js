@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-06 15:54:13
+ * @LastEditTime: 2020-08-06 19:14:08
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \admin\duling-vue\src\main.js
+ */
 
 /**
  * ../ 上一级目录
@@ -11,8 +19,8 @@ import './components/AntDesignCore/AntDesignCompents'
 import "./router/permission"
 import '../mock/index.js'
 
-// import echarts  from 'echarts'
-// Vue.prototype.$echarts = echarts;
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 // 全局状态管理器
 import store from "@/store"
