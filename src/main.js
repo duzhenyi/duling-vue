@@ -17,8 +17,16 @@ import './components/AntDesignCore/AntDesignCompents'
 // 引入路由守卫
 import "./router/permission"
 
+// 全局状态管理器
+import store from "@/store"
+
 // 引入mock请求依赖库
 import '../mock/index.js'
+
+
+
+// 引入图标库
+import "@/assets/iconfont/iconfont.js"
 
 // 引入图表依赖库
 import echarts from 'echarts'
@@ -47,12 +55,10 @@ Vue.prototype.$driver = new Driver({
   onPrevious: (Element) => { },//在任何步骤中移动到上一步时调用
 })
 
-// 全局状态管理器
-import store from "@/store"
+
 
 //以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
-
 new Vue({
   router,//默认表示 router:router
   store, //将我们创建的Vuex实例挂载到这个vue实例中

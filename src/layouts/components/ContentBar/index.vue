@@ -1,5 +1,7 @@
 <template>
-  <a-layout-content :style="{ margin: '5px 5px 0'  }">
+  <a-layout-content
+    :style="{ margin: '5px 5px 0',minHeight: '360px','overflow-y': 'auto', height: 'calc(100vh - 64px)'  }"
+  >
     <!-- 多标签页 -->
     <a-tabs
       v-if="openMultipleTabs"
@@ -15,18 +17,7 @@
         :key="pane.key"
         :tab="pane.title"
         :closable="pane.closable"
-      >
-        <!-- 面包导航 -->
-        <a-breadcrumb v-show="showGlobalBreadcrumbNavigation">
-          <a-breadcrumb-item>
-            <a-icon v-show="globalBreadcrumbDisplayIcon" type="home" />Home
-          </a-breadcrumb-item>
-          <a-breadcrumb-item>
-            <a-icon v-show="globalBreadcrumbDisplayIcon" type="idcard" />List
-          </a-breadcrumb-item>
-          <a-breadcrumb-item>App</a-breadcrumb-item>
-        </a-breadcrumb>
-      </a-tab-pane>
+      ></a-tab-pane>
 
       <!--右侧按钮组-->
       <a-dropdown slot="tabBarExtraContent">
@@ -57,12 +48,10 @@
 
     <!--将需要缓存的视图用keep-alive包裹-->
     <keep-alive :include="routeStore" :max="10">
-      <router-view
-        :key="routeKey"
-        :style="{ color:'black', padding:'10px', background: '#fff', minHeight: '360px','overflow-y': 'auto', height: 'calc(100vh - 64px)' }"
-      ></router-view>
+      <router-view :key="routeKey" :style="{ color:'black', padding:'10px', background: '#fff', }">
+        <a-back-top visibilityHeight="200" />
+      </router-view>
     </keep-alive>
-    <a-back-top />
   </a-layout-content>
 </template>
 <script>
@@ -135,18 +124,6 @@ export default {
   props: {
     // 多标签页
     openMultipleTabs: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    // 显示全局面包屑导航
-    showGlobalBreadcrumbNavigation: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    // 显示全局面包屑导航图标
-    globalBreadcrumbDisplayIcon: {
       type: Boolean,
       required: false,
       default: false,

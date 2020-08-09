@@ -243,6 +243,19 @@
       <a-col :span="col_3_span">
         <!--顶部右侧工具-->
         <div class="header-tool-right">
+          <!-- 面包导航 -->
+
+          <span class="tool" v-if="this.layout != 'vertical'">
+            <a-breadcrumb v-show="showGlobalBreadcrumbNavigation">
+              <a-breadcrumb-item>
+                <a-icon v-show="globalBreadcrumbDisplayIcon" type="home" />Home
+              </a-breadcrumb-item>
+              <a-breadcrumb-item>
+                <a-icon v-show="globalBreadcrumbDisplayIcon" type="idcard" />List
+              </a-breadcrumb-item>
+              <a-breadcrumb-item>App</a-breadcrumb-item>
+            </a-breadcrumb>
+          </span>
           <!--搜索框-->
           <span class="tool">
             <input placeholder="🎉input search text" class="header-search" />
@@ -355,7 +368,7 @@
           </span>
 
           <!--多语言-->
-          <span class="tool theme-color">
+          <span class="tool theme-color" v-if="showMultilingualSelection">
             <a-popover placement="bottomRight" trigger="hover">
               <template slot="content">
                 <a-list item-layout="horizontal">
@@ -424,7 +437,7 @@ import { mapActions } from "vuex";
 export default {
   components: {
     ScreenfullBar,
-    ThemeBar
+    ThemeBar,
   },
   data() {
     return {
@@ -432,7 +445,7 @@ export default {
       visible: false,
       col_1_span: 4,
       col_2_span: 10,
-      col_3_span: 10
+      col_3_span: 10,
     };
   },
   created() {
@@ -442,11 +455,11 @@ export default {
       this.col_3_span = 10;
     } else {
       this.col_1_span = 0;
-      this.col_2_span = 14;
-      this.col_3_span = 10;
+      this.col_2_span = 10;
+      this.col_3_span = 14;
     }
     //主题配置页关闭的时候传值过来
-    Bus.$on("showThemeDrawer", val => {
+    Bus.$on("showThemeDrawer", (val) => {
       this.visible = val;
     });
   },
@@ -468,45 +481,60 @@ export default {
     logoOut() {
       let that = this;
       this.loginOut()
-        .then(res => {
-          that.$router.push({ path: "/login" }).catch(error => {});
+        .then((res) => {
+          that.$router.push({ path: "/login" }).catch((error) => {});
         })
-        .catch(err => {
-        })
+        .catch((err) => {})
         .finally(() => {});
-    }
+    },
   },
   props: {
     fixedSideBar: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     //菜单类型，现在支持垂直、水平、和内嵌模式三种 string: vertical vertical-right horizontal inlin
     menuMode: {
       type: String,
       required: false,
-      default: "horizontal"
+      default: "horizontal",
     },
     //主题颜色 string: light dark
     headerTheme: {
       type: String,
       required: false,
-      default: "dark"
+      default: "dark",
     },
     // 全局布局方式 horizontal,vertical
     layout: {
       type: String,
       required: false,
-      default: "horizontal"
+      default: "horizontal",
     },
     // 是否显示logo
     displayLogo: {
       type: Boolean,
       required: false,
-      default: true
-    }
-  }
+      default: true,
+    }, // 显示全局面包屑导航
+    showGlobalBreadcrumbNavigation: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    // 显示全局面包屑导航图标
+    globalBreadcrumbDisplayIcon: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    showMultilingualSelection: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -525,6 +553,14 @@ export default {
 }
 
 //头部右侧工具栏
+
+.ant-breadcrumb {
+  color: #ffff;
+}
+.ant-breadcrumb-separator {
+  color: #ffff !important;
+}
+
 .header-tool-right {
   float: right;
   height: 100%;

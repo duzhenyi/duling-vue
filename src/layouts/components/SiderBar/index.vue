@@ -286,14 +286,13 @@ export default {
 
 ::-webkit-scrollbar-track {
   width: 6px;
-  background-color: #0d1b20;
+  background-color: #228eb6bd;
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
   border-radius: 2em;
 }
 
 /*滚动条的设置*/
-
 ::-webkit-scrollbar-thumb {
   background-color: #606d71;
   background-clip: padding-box;
@@ -303,8 +302,7 @@ export default {
   border-radius: 2em;
 }
 /*滚动条移上去的背景*/
-
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #ffff;
+  background-color:#606d71;
 }
 </style>

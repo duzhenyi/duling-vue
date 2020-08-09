@@ -102,7 +102,7 @@
         ></content-bar>
         <footer-bar></footer-bar>
       </a-layout>
-    </a-layout>
+    </a-layout> 
   </div>
 </template>
 
@@ -225,15 +225,15 @@ export default {
 
 /*滚动条的宽度*/
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
+  width: 8px;
+  height: 8px;
 }
 
 /*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
 
 ::-webkit-scrollbar-track {
   width: 6px;
-  background-color: #0d1b20;
+  background-color: #228eb6bd;
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
   border-radius: 2em;
@@ -252,6 +252,6 @@ export default {
 /*滚动条移上去的背景*/
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #ffff;
+  background-color: #606d71;
 }
 </style>
