@@ -157,7 +157,7 @@ export default {
 <style lang="less" scope>
 /* 导航面包背景颜色 下面2种都可以 */
 .ant-layout-content .ant-breadcrumb {
-  background: #edf2ee  !important;
+  background: #edf2ee !important;
   padding: 10px !important;
 }
 

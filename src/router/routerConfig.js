@@ -20,10 +20,6 @@ const defaultRoutes =
             path: '/404',
             component: () => import('@/views/exception/404')
         },
-        {
-            path: '/500',
-            component: () => import('@/views/exception/500')
-        }
     ]
 
 // 根基菜单

@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-06-29 22:12:41
- * @LastEditTime: 2020-07-31 14:02:00
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \admin\duling-vue\src\helper\httpRequest.js
- */ 
 import axios from "axios";
 import store from "@/store";
 import router from "@/router";
@@ -45,10 +37,15 @@ const error = (error) => {
     }
     return Promise.reject(error)
 }
+
 /**
  * http request 
  */
 service.interceptors.request.use((config) => {
+    // 如果不是请求的mock，则改变请求地址
+    if(!config.requestMock){
+        config.baseURL = config.baseURL
+    }
     if (store.getters[AccessToken]) {
         config.headers['Authorization'] = store.getters[AccessToken];
     }

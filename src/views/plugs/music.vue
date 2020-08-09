@@ -1,11 +1,11 @@
 <template>
-  <div style="padding:10px">
-    Home3
+ <div style="padding:10px">
+   
   </div>
 </template>
 <script>
 export default {
-  name: "Home3",
+  name: "Music",
   components: {},
   data() {
     return {

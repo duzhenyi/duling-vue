@@ -325,17 +325,15 @@ export default {
     };
   },
   created() {
-    console.log(1);
   },
   mounted() {
-    console.log(2);
     this.loadCharts();
   },
   methods: {
     loadCharts() {
       let option = {
         title: {
-          text: "ECharts 入门示例",
+          text: "最新数据显示",
         },
         tooltip: {},
         xAxis: {

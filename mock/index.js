@@ -39,9 +39,141 @@ const navRouters = {
             children: [
                 { key: '1_1', title: '首页1', name: 'Home1', path: '/home1', component: 'home/home1', target: '', children: [] },
                 { key: '1_2', title: '首页2', name: 'Home2', path: '/home2', component: 'home/home2', target: '', children: [] },
-                { key: '1_3', title: '首页3', name: 'Home3', path: '/home3', component: 'home/home3', target: '', children: [] },
+            ]
+        }, 
+        {
+            key: 'd_2',
+            title: '引导页',
+            name: 'Driver',
+            icon: 'bold',
+            path: '/driver/index',
+            component: 'EmptyLayout',
+            redirect: '',
+            target: '',
+            children: []
+        },
+        {
+            key: 'd_3',
+            title: '图标',
+            name: 'Icon',
+            icon: 'highlight',
+            path: '',
+            component: 'EmptyLayout',
+            redirect: '/basic',
+            target: '',
+            children: [
+                { key: 'd_4_1', title: '基础图标', name: 'Basic', path: '/basic', component: 'icon/basic', target: '', children: [] },
+                { key: 'd_4_2', title: '彩色图标', name: 'Colorful', path: '/colorful', component: 'icon/colorful', target: '', children: [] },
+                { key: 'd_4_3', title: '其他图标', name: 'Other', path: '/other', component: 'icon/other', target: '', children: [] },
             ]
         }, {
+            key: 'd_4',
+            title: '组件',
+            name: 'Plugs',
+            icon: 'gateway',
+            path: '',
+            component: 'EmptyLayout',
+            redirect: '/editer',
+            target: '',
+            children: [
+                { key: 'd_4_1', title: '富文本编辑器', name: 'Editer', path: '/editer', component: 'plugs/editer', target: '', children: [] },
+                { key: 'd_4_2', title: 'Markdown', name: 'Markdown', path: '/markdown', component: 'plugs/markdown', target: '', children: [] },
+                { key: 'd_4_3', title: 'JSON编辑器', name: 'JsonEdit', path: '/jsonEdit', component: 'plugs/jsonEdit', target: '', children: [] },
+                { key: 'd_4_4', title: '图片上传', name: 'ImgUpload', path: '/imgUpload', component: 'plugs/imgUpload', target: '', children: [] },
+                { key: 'd_4_5', title: '文件上传', name: 'FileUpload', path: '/fileUpload', component: 'plugs/fileUpload', target: '', children: [] },
+                { key: 'd_4_6', title: '拖拽Dialog', name: 'DragDialog', path: '/DragDialog', component: 'plugs/dragDialog', target: '', children: [] },
+                { key: 'd_4_7', title: '视频播放器', name: 'Video', path: '/video', component: 'plugs/video', target: '', children: [] },
+                { key: 'd_4_8', title: '音频播放器', name: 'Music', path: '/music', component: 'plugs/music', target: '', children: [] },
+                { key: 'd_4_9', title: '地图API', name: 'Map', path: '/map', component: 'plugs/map', target: '', children: [] },
+                { key: 'd_4_10', title: '二维码', name: 'RCode', path: '/rcode', component: 'plugs/rcode', target: '', children: [] },
+                { key: 'd_4_11', title: '放大镜', name: 'Glass', path: '/glass', component: 'plugs/glass', target: '', children: [] },
+            ]
+        },
+        {
+            key: 'd_5',
+            title: '图表',
+            name: 'Report',
+            icon: 'ordered-list',
+            path: '/report/index',
+            component: 'EmptyLayout',
+            redirect: '',
+            target: '',
+            children: []
+        },{
+            key: 'd_6',
+            title: '表格',
+            name: 'Table',
+            icon: 'table',
+            path: '/',
+            component: 'EmptyLayout',
+            redirect: '/basic',
+            target: '',
+            children: [
+                { key: 'd_6_1', title: '基础表格', name: 'Basic', path: '/basic1', component: 'table/basic', target: '', children: [] },
+                { key: 'd_6_2', title: '动态表格', name: 'Dynamic', path: '/dynamic', component: 'table/dynamic', target: '', children: [] },
+                { key: 'd_6_3', title: '其他表格', name: 'Other', path: '/other', component: 'table/other', target: '', children: [] },
+            ]
+        },
+        {
+            key: 'd_7',
+            title: '表单',
+            name: 'Form',
+            icon: 'form',
+            path: '/',
+            component: 'EmptyLayout',
+            redirect: '/basic',
+            target: '',
+            children: [
+                { key: 'd_7_1', title: '基础表单', name: 'Basic', path: '/basic', component: 'form/basic', target: '', children: [] },
+                { key: 'd_7_2', title: '文章详情', name: 'Article', path: '/article', component: 'form/article', target: '', children: [] },
+                { key: 'd_7_3', title: '商品详情', name: 'Product', path: '/product', component: 'form/product', target: '', children: [] },
+                { key: 'd_7_4', title: '订单详情', name: 'Order', path: '/order', component: 'form/order', target: '', children: [] },
+                { key: 'd_7_5', title: '表单生成器', name: 'Builder', path: '/builder', component: 'form/builder', target: '', children: [] },
+            ]
+        },
+        {
+            key: 'd_8',
+            title: '错误页面',
+            name: 'Exception',
+            icon: 'bell',
+            path: '/',
+            component: 'EmptyLayout',
+            redirect: '/401',
+            target: '',
+            children: [
+                { key: 'd_8_1', title: '401', name: '401', path: '/401', component: 'exception/401', target: '', children: [] },
+                { key: 'd_8_2', title: '404', name: '404', path: '/404', component: 'exception/404', target: '', children: [] },
+            ]
+        },{
+            key: 'd_9',
+            title: '多语言',
+            name: 'Language',
+            icon: 'global',
+            path: 'language/index',
+            component: 'EmptyLayout',
+            redirect: '',
+            target: '',
+            children: []
+        },
+        {
+            key: 'd_10',
+            title: 'Office',
+            name: 'Office',
+            icon: 'container',
+            path: '/',
+            component: 'EmptyLayout',
+            redirect: '/excel1',
+            target: '',
+            children: [
+                { key: 'd_10_1', title: '导出Excel', name: 'Excel1', path: '/excel1', component: 'office/excel1', target: '', children: [] },
+                { key: 'd_10_2', title: '导出已选择项', name: 'Excel2', path: '/excel2', component: 'office/excel2', target: '', children: [] },
+                { key: 'd_10_3', title: '导出多级表头', name: 'Excel3', path: '/excel3', component: 'office/excel3', target: '', children: [] },
+                { key: 'd_10_4', title: '上传Excel', name: 'Excel4', path: '/excel4', component: 'office/excel4', target: '', children: [] },
+                { key: 'd_10_5', title: '导出ZIP', name: 'ZIP1', path: '/zip1', component: 'office/zip1', target: '', children: [] },
+                { key: 'd_10_6', title: '导出PDF', name: 'PDF1', path: '/pdf1', component: 'office/pdf1', target: '', children: [] },
+            ]
+        }, 
+        {
             key: '2',
             title: '用户中心',
             name: 'User',
