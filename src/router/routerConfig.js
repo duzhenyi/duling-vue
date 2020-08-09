@@ -58,7 +58,7 @@ export const generator = (data, parentRoute) => {
         const router = {
             name: item.name,
             // 如果路由设置了 path，则作为默认 path，否则 路由地址 动态拼接生成如 /dashboard/workplace
-            path: item.path || `${parentRoute && parentRoute.path || ''}/${item.key}`,
+            path: item.path, //|| `${parentRoute && parentRoute.path || ''}/${item.key}`,
             // 该路由对应页面的组件 
             component: item.component === 'EmptyLayout' ? EmptyLayout : () => import(`@/views/${item.component}`),
             // meta: 页面标题, 菜单图标

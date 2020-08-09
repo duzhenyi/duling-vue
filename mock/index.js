@@ -46,8 +46,8 @@ const navRouters = {
             title: '引导页',
             name: 'Driver',
             icon: 'bold',
-            path: '/driver/index',
-            component: 'EmptyLayout',
+            path: '/driver',
+            component: 'driver/index',
             redirect: '',
             target: '',
             children: []
@@ -94,8 +94,8 @@ const navRouters = {
             title: '图表',
             name: 'Report',
             icon: 'ordered-list',
-            path: '/report/index',
-            component: 'EmptyLayout',
+            path: '/report',
+            component: 'report/index',
             redirect: '',
             target: '',
             children: []
@@ -149,8 +149,8 @@ const navRouters = {
             title: '多语言',
             name: 'Language',
             icon: 'global',
-            path: 'language/index',
-            component: 'EmptyLayout',
+            path: '/language',
+            component: 'language/index',
             redirect: '',
             target: '',
             children: []
@@ -336,8 +336,8 @@ const navRouters = {
             title: '留言管理',
             name: 'Message',
             icon: 'message',
-            path: 'message/message1',
-            component: 'EmptyLayout',
+            path: '/message',
+            component: 'message/message1',
             redirect: '',
             target: '',
             children: []

@@ -26,7 +26,8 @@ import { getAccessToken } from '@/helper/accessToken'
  * 确保要调用 next 方法，否则钩子就不会被 resolved
  */
 router.beforeResolve(async (to, from, next) => {
-    
+    console.log('to:',to)
+    console.log('from:',from)
     // 获取token
     let token = getAccessToken(AccessToken);
     // token存在
@@ -44,6 +45,7 @@ router.beforeResolve(async (to, from, next) => {
                     const roles = res.code === 200 && res.data.roles
                     store.dispatch("getNavRouters",roles).then((routes) => {
                         // 添加路由数据到路由表
+                        console.log('routes:',routes)
                         router.addRoutes(routes);
                         next({ ...to, replace: true });
                     })
