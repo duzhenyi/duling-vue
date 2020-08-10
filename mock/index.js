@@ -62,7 +62,7 @@ const navRouters = {
             redirect: '/basic',
             target: '',
             children: [
-                { key: 'd_4_1', title: '基础图标', name: 'Basic', path: '/basic', component: 'icon/basic', target: '', children: [] },
+                { key: 'd_4_1', title: '基础图标', name: 'Basic_Icon', path: '/basic', component: 'icon/basic', target: '', children: [] },
                 // { key: 'd_4_2', title: '彩色图标', name: 'Colorful', path: '/colorful', component: 'icon/colorful', target: '', children: [] },
                 // { key: 'd_4_3', title: '其他图标', name: 'Other', path: '/other', component: 'icon/other', target: '', children: [] },
             ]
@@ -92,10 +92,10 @@ const navRouters = {
         {
             key: 'd_5',
             title: '图表',
-            name: 'Report',
+            name: 'Charts',
             icon: 'ordered-list',
-            path: '/report',
-            component: 'report/index',
+            path: '/chart',
+            component: 'chart/index',
             redirect: '',
             target: '',
             children: []
@@ -109,7 +109,7 @@ const navRouters = {
             redirect: '/basic',
             target: '',
             children: [
-                { key: 'd_6_1', title: '基础表格', name: 'Basic', path: '/basic1', component: 'table/basic', target: '', children: [] },
+                { key: 'd_6_1', title: '基础表格', name: 'Basic1', path: '/basic1', component: 'table/basic', target: '', children: [] },
                 { key: 'd_6_2', title: '动态表格', name: 'Dynamic', path: '/dynamic', component: 'table/dynamic', target: '', children: [] },
                 { key: 'd_6_3', title: '其他表格', name: 'Other', path: '/other', component: 'table/other', target: '', children: [] },
             ]
@@ -124,10 +124,10 @@ const navRouters = {
             redirect: '/basic',
             target: '',
             children: [
-                { key: 'd_7_1', title: '基础表单', name: 'Basic', path: '/basic', component: 'form/basic', target: '', children: [] },
+                { key: 'd_7_1', title: '基础表单', name: 'BasicTable', path: '/basic', component: 'form/basic', target: '', children: [] },
                 { key: 'd_7_2', title: '文章详情', name: 'Article', path: '/article', component: 'form/article', target: '', children: [] },
                 { key: 'd_7_3', title: '商品详情', name: 'Product', path: '/product', component: 'form/product', target: '', children: [] },
-                { key: 'd_7_4', title: '订单详情', name: 'Order', path: '/order', component: 'form/order', target: '', children: [] },
+                { key: 'd_7_4', title: '订单详情', name: 'OrderDetail', path: '/order', component: 'form/order', target: '', children: [] },
                 { key: 'd_7_5', title: '表单生成器', name: 'Builder', path: '/builder', component: 'form/builder', target: '', children: [] },
             ]
         },

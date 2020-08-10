@@ -15,7 +15,7 @@
 <script>
 // driver04.需要引导的页面中导入节点配置文件
 import { driverStep } from "./driver";
-import Driver from 'driver.js'
+// import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 export default {
   name: "Driver",

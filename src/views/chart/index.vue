@@ -2,23 +2,23 @@
   <div style="padding:10px">
         <a-row :gutter="10">
           <a-col :span="8">
-            <div class="report" ref="report1" id="report1"></div>
+            <div class="chart" ref="chart1" id="chart1"></div>
           </a-col>
           <a-col :span="8">
-            <div class="report" ref="report2" id="report2"></div>
+            <div class="chart" ref="chart2" id="chart2"></div>
           </a-col>
           <a-col :span="8">
-            <div class="report" ref="report3" id="report3"></div>
+            <div class="chart" ref="chart3" id="chart3"></div>
           </a-col>
         </a-row>
         <a-row :gutter="10" style="margin-top:10px">
           <a-col :span="24">
-            <div class="report" ref="report4" id="report4"></div>
+            <div class="chart" ref="chart4" id="chart4"></div>
           </a-col> 
         </a-row>
          <a-row :gutter="10" style="margin-top:10px">
           <a-col :span="24">
-            <div class="report" ref="report5" id="report5"></div>
+            <div class="chart" ref="chart5" id="chart5"></div>
           </a-col>
         </a-row>
   </div>
@@ -33,49 +33,49 @@ import {
   option6,
 } from "./data";
 export default {
-  name: "Report",
+  name: "Chart",
   components: {},
   data() {
     return {};
   },
   mounted() {
-    this.report1();
-    this.report2();
-    this.report3();
-    this.report4();
-    this.report5();
-    this.report6(); 
+    this.chart1();
+    this.chart2();
+    this.chart3();
+    this.chart4();
+    this.chart5();
+    this.chart6(); 
   },
   methods: {
-    report1() {
-      let myChart = this.$echarts.init(document.getElementById("report1"));
+    chart1() {
+      let myChart = this.$echarts.init(document.getElementById("chart1"));
       myChart.setOption(option1);
     },
-    report2() {
-      let myChart = this.$echarts.init(document.getElementById("report2"));
+    chart2() {
+      let myChart = this.$echarts.init(document.getElementById("chart2"));
       myChart.setOption(option2);
     },
-    report3() {
-      let myChart = this.$echarts.init(document.getElementById("report3"));
+    chart3() {
+      let myChart = this.$echarts.init(document.getElementById("chart3"));
       myChart.setOption(option3);
     },
-    report4() {
-      let myChart = this.$echarts.init(document.getElementById("report4"));
+    chart4() {
+      let myChart = this.$echarts.init(document.getElementById("chart4"));
       myChart.setOption(option4);
     },
-    report5() {
-      let myChart = this.$echarts.init(document.getElementById("report5"));
+    chart5() {
+      let myChart = this.$echarts.init(document.getElementById("chart5"));
       myChart.setOption(option5);
     },
-    report6() {
-      let myChart = this.$echarts.init(this.$refs.report6);
+    chart6() {
+      let myChart = this.$echarts.init(this.$refs.chart6);
       myChart.setOption(option6);
     },
   },
 };
 </script>
 <style lang="less" scoped>
-.report {
+.chart {
   height: 300px;
   border: 1px solid silver;
 }

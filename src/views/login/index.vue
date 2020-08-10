@@ -103,15 +103,18 @@ export default {
       // 进行form表单验证，查看每个表单项里面的rule
       this.form.validateFields((err, values) => {
         if (err) {
+          console.log(err)
           this.alert("Received values of form: ", values);
         } else {
           values.password = md5(values.password);
           this.login(values)
             .then((res) => {
-              that.$router.push({ path: that.redirect }).catch((error) => {});
+              console.log(res)
+              that.$router.push({ path: that.redirect }).catch((error) => {console.log(error)});
               that.loginBtnLoading = false;
             })
             .catch((err) => {
+              console.log(err)
               this.loginBtnLoading = false;
             })
             .finally(() => {});
