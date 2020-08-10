@@ -63,8 +63,8 @@ const navRouters = {
             target: '',
             children: [
                 { key: 'd_4_1', title: '基础图标', name: 'Basic', path: '/basic', component: 'icon/basic', target: '', children: [] },
-                { key: 'd_4_2', title: '彩色图标', name: 'Colorful', path: '/colorful', component: 'icon/colorful', target: '', children: [] },
-                { key: 'd_4_3', title: '其他图标', name: 'Other', path: '/other', component: 'icon/other', target: '', children: [] },
+                // { key: 'd_4_2', title: '彩色图标', name: 'Colorful', path: '/colorful', component: 'icon/colorful', target: '', children: [] },
+                // { key: 'd_4_3', title: '其他图标', name: 'Other', path: '/other', component: 'icon/other', target: '', children: [] },
             ]
         }, {
             key: 'd_4',
