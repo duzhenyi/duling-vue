@@ -6,6 +6,7 @@ import Vue from 'vue'
 
 import {
     Base,
+    version,
     Affix,
     Anchor,
     AutoComplete,
@@ -136,7 +137,7 @@ Vue.use(Empty)
 Vue.use(Result)
 Vue.use(Descriptions)
 Vue.use(PageHeader)
-Vue.use(message)
+ 
 
 Vue.prototype.$message = message
 Vue.prototype.$notification = notification
@@ -146,3 +147,5 @@ Vue.prototype.$error = Modal.error
 Vue.prototype.$warning = Modal.warning
 Vue.prototype.$confirm = Modal.confirm
 Vue.prototype.$destroyAll = Modal.destroyAll
+
+ 

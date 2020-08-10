@@ -26,8 +26,6 @@ import { getAccessToken } from '@/helper/accessToken'
  * 确保要调用 next 方法，否则钩子就不会被 resolved
  */
 router.beforeResolve(async (to, from, next) => {
-    console.log('to:',to)
-    console.log('from:',from)
     // 获取token
     let token = getAccessToken(AccessToken);
     // token存在

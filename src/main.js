@@ -55,8 +55,6 @@ Vue.prototype.$driver = new Driver({
   onPrevious: (Element) => { },//在任何步骤中移动到上一步时调用
 })
 
-
-
 //以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
 new Vue({

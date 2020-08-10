@@ -3,12 +3,13 @@
     <a-divider>点击图标即可复制源码</a-divider>
     <a-card>
       <a-card-grid
-        @click.native="handleCopyIcon(item.font_class,$event)"
+        @click.stop="handleCopyIcon(item.font_class,$event)"
         v-for="(item,index) in iconList"
         :key="index"
       >
         <a-tooltip>
           <template slot="title">{{ escapeHTM(item.font_class) }}</template>
+          <span></span>
           <icon-font :type="item.font_class"></icon-font>
           <a-card-meta :title="item.font_class" />
         </a-tooltip>
@@ -28,7 +29,6 @@ export default {
   data() {
     return {
       iconList: [],
-      copyText:''
     };
   },
   created() {
@@ -39,12 +39,12 @@ export default {
       this.iconList = iconfontData.glyphs;
     },
     escapeHTM(str) {
-      return `<icon-font :type='${str}'></icon-font>`;
+      return `<icon-font :type='${str}'/>`;
     },
     handleCopyIcon(str, event) {
-      const txt= `<icon-font :type='${str}'></icon-font>`
-      this.copyText = txt 
-      clip(this.copyText, event);
+      debugger;
+      const txt = "<icon-font :type='" + str + "'/>";
+      clip(txt, event, this);
     },
   },
 };
