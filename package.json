@@ -21,7 +21,7 @@
     "md5": "^2.3.0",
     "mockjs": "^1.1.0",
     "screenfull": "^5.0.2",
-    "tinymce": "4.8.5",
+    "tinymce": "4.9.10",
     "@tinymce/tinymce-vue": "1.1.0",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
