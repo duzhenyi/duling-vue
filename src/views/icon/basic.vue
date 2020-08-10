@@ -3,7 +3,7 @@
     <a-divider>点击图标即可复制源码</a-divider>
     <a-card>
       <a-card-grid
-        @click.stop="handleCopyIcon(item.font_class,$event)"
+        @click.stop="handleCopyIcon(item.font_class)"
         v-for="(item,index) in iconList"
         :key="index"
       >
@@ -18,7 +18,6 @@
   </div>
 </template>
 <script>
-import clip from "@/helper/clipboard";
 import IconFont from "_c/IconFont";
 import iconfontData from "@/assets/iconfont/iconfont.json";
 export default {
@@ -41,10 +40,17 @@ export default {
     escapeHTM(str) {
       return `<icon-font :type='${str}'/>`;
     },
-    handleCopyIcon(str, event) {
-      debugger;
+    handleCopyIcon(str) {
+      var that = this;
       const txt = "<icon-font :type='" + str + "'/>";
-      clip(txt, event, this);
+      this.$copyText(txt).then(
+        function (e) {
+          that.$message.success("复制成功");
+        },
+        function (e) {
+          that.$message.error("复制失败");
+        }
+      );
     },
   },
 };

@@ -22,15 +22,18 @@ import store from "@/store"
 
 // 引入mock请求依赖库
 import '../mock/index.js'
-
-
-
+ 
 // 引入图标库
 import "@/assets/iconfont/iconfont.js"
 
 // 引入图表依赖库
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
+
+// 引入复制到粘贴板依赖库
+import VueClipboard from 'vue-clipboard2'
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 
 // driver01.引入先手引导页依赖库 https://github.com/kamranahmedse/driver.js
 import Driver from 'driver.js'
