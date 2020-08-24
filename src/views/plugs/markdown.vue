@@ -57,6 +57,7 @@ export default {
   methods: {
     // 将图片上传到服务器，返回地址替换到md中
     imgAdd(pos, $file) {
+      console.log($file)
       let formdata = new FormData();
       this.$upload
         .post("/上传接口地址", formdata)

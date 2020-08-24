@@ -14,8 +14,8 @@
 
 <script>
 // driver01.引入先手引导页依赖库 https://github.com/kamranahmedse/driver.js
-import Driver from 'driver.js'
-import 'driver.js/dist/driver.min.css' 
+import Driver from "driver.js";
+import "driver.js/dist/driver.min.css";
 // driver04.需要引导的页面中导入节点配置文件
 import { driverStep } from "./driver";
 import "driver.js/dist/driver.min.css";
@@ -41,13 +41,25 @@ export default {
       closeBtnText: "关闭",
       nextBtnText: "下一步",
       prevBtnText: "上一步",
-      onHighlightStarted: (Element) => {}, //元素即将突出显示时调用
-      onHighlighted: (Element) => {}, //元素完全突出显示时调用
-      onDeselected: (Element) => {}, //取消选择元素时调用
-      onReset: (Element) => {}, //当要清除叠加时调用
-      onNext: (Element) => {}, //在任何步骤中移动到下一步时调用
-      onPrevious: (Element) => {}, //在任何步骤中移动到上一步时调用
-    }); 
+      onHighlightStarted: (element) => {
+        console.log(element);
+      }, //元素即将突出显示时调用
+      onHighlighted: (element) => {
+        console.log(element);
+      }, //元素完全突出显示时调用
+      onDeselected: (element) => {
+        console.log(element);
+      }, //取消选择元素时调用
+      onReset: (element) => {
+        console.log(element);
+      }, //当要清除叠加时调用
+      onNext: (element) => {
+        console.log(element);
+      }, //在任何步骤中移动到下一步时调用
+      onPrevious: (element) => {
+        console.log(element);
+      }, //在任何步骤中移动到上一步时调用
+    });
   },
 
   methods: {
