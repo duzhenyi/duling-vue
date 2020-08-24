@@ -5,7 +5,7 @@ export const driverStep =  [
         popover: {
             title: '第一步',
             description: '显示用户名,退出,全屏操作,换肤操作',
-            position: 'left',
+            position: 'right',
         }
     },
     {
@@ -13,7 +13,7 @@ export const driverStep =  [
         popover: {
             title: '第二步',
             description: '点击开关导航栏，面包屑展示',
-            position: 'right',
+            position: 'left',
         }
     },
     {

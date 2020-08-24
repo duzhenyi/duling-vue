@@ -1,6 +1,6 @@
 <template>
   <div style="padding:10px">
-    <a-button @click="start" type="primary">开始引导页</a-button>
+    <a-button @click.prevent.stop="start" type="primary">开始引导页</a-button>
     <a-divider />
     <div class="div-left">
       <div style="background:silver;" id="step1">第一步</div>
