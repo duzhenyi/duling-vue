@@ -1,7 +1,8 @@
 <template>
   <div style="padding:10px">
     <mavon-editor v-model="content" :toolbars="markdownOption" @imgAdd="imgAdd" @change="change" ref="md" style="min-height: 550px" />
-    <button @click="save">提交</button>
+    
+    <a-button  type="primary" @click="save">提交</a-button>
   </div>
 </template>
 <script>

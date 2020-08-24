@@ -35,28 +35,6 @@ import VueClipboard from 'vue-clipboard2'
 VueClipboard.config.autoSetContainer = true
 Vue.use(VueClipboard)
 
-// driver01.引入先手引导页依赖库 https://github.com/kamranahmedse/driver.js
-import Driver from 'driver.js'
-import 'driver.js/dist/driver.min.css'
-// driver02.将配置引导页基础方法写入原型
-Vue.prototype.$driver = new Driver({
-  animate: true, // 当改变突出显示的元素时动画
-  opacity: 0.75, // 背景不透明度(0表示只有弹出窗口，没有叠加)
-  padding: 10, // 元素从边缘周围的距离
-  allowClose: true, // 点击叠加是否应该关闭
-  overlayClickNext: false, // 它应该移动到下一步覆盖点击
-  stageBackground: '#ffffff', // 突出显示元素的背景颜色
-  doneBtnText: '完成',
-  closeBtnText: '关闭',
-  nextBtnText: '下一步',
-  prevBtnText: '上一步',
-  onHighlightStarted: (Element) => { },//元素即将突出显示时调用
-  onHighlighted: (Element) => { },//元素完全突出显示时调用
-  onDeselected: (Element) => { },//取消选择元素时调用
-  onReset: (Element) => { },//当要清除叠加时调用
-  onNext: (Element) => { },//在任何步骤中移动到下一步时调用
-  onPrevious: (Element) => { },//在任何步骤中移动到上一步时调用
-})
 
 //以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
