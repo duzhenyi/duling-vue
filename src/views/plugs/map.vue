@@ -26,7 +26,7 @@
 import {
   BaiduMap,
   BmPanorama,
-  BmCityList,
+  //BmCityList,
   BmGeolocation,
   BmOverviewMap,
   BmMapType,
@@ -38,7 +38,7 @@ export default {
   components: {
     BaiduMap,
     BmPanorama, // 全景
-    BmCityList, // 城市列表
+    //BmCityList, // 城市列表
     BmGeolocation, // 定位
     BmOverviewMap, // 地图缩略图
     BmMapType, // 地图类型
