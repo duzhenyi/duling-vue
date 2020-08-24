@@ -1,19 +1,271 @@
 <template>
- <div style="padding:10px">
-   Basic
+  <div style="padding:10px">
+    <a-table
+      bordered
+      :scroll="{ x: 1500, y: 300 }"
+      :columns="columns"
+      :row-key="record => record.key"
+      :data-source="data"
+      :pagination="pagination"
+      :row-selection="rowSelection"
+      :loading="loading"
+      @change="handleTableChange"
+    >
+      <template slot="name" slot-scope="text">
+        <a>{{ text }}</a>
+      </template>
+      <span slot="tags" slot-scope="tags">
+        <a-tag
+          v-for="tag in tags"
+          :key="tag"
+          :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
+        >{{ tag.toUpperCase() }}</a-tag>
+      </span>
+      <span slot="action">
+        <a>
+          <a-icon type="eye" />详情
+        </a>
+        <a-divider type="vertical" />
+        <a>
+          <a-icon type="edit" />修改
+        </a>
+        <a-divider type="vertical" />
+        <a>
+          <a-icon type="delete" />删除
+        </a>
+        <a-divider type="vertical" />
+        <a-dropdown>
+          <a-menu slot="overlay">
+            <a-menu-item>
+              <a>档案入册</a>
+            </a-menu-item>
+            <a-menu-item>
+              <a>审核信息</a>
+            </a-menu-item>
+          </a-menu>
+          <a>
+            更多
+            <a-icon type="down" />
+          </a>
+        </a-dropdown>
+      </span>
+      <template slot="title">
+        <a-button type="primary" @click="handleAdd">
+          <a-icon type="plus-circle" />添加
+        </a-button>
+        <a-divider type="vertical" />
+        <a-button type="danger" @click="handleAdd">
+          <a-icon type="minus-circle" />删除
+        </a-button>
+        <a-divider type="vertical" />
+        <a-button type="dashed" @click="handleAdd">
+          <a-icon type="vertical-align-top" />导入
+        </a-button>
+        <a-divider type="vertical" />
+        <a-button type="dashed" @click="handleAdd">
+          <a-icon type="vertical-align-bottom" />导出
+        </a-button>
+        <div class="element-right">
+          <a-input-search placeholder="请输入关键字查询" @search="onSearch">
+            <a-icon slot="addonAfter" type="down" />
+            <a-divider type="vertical" />
+            <a-popover placement="top">
+              <template slot="content">刷新</template>
+              <a-button :loading="loading" icon="sync"></a-button>
+            </a-popover>
+          </a-input-search>
+        </div>
+      </template>
+      <template slot="footer">
+        <a-alert
+          show-icon
+          type="warning"
+          message="这里是表格的页脚,可以放置部分统计的结果等,表单高度自定义设置
+可在扩展js中的onInit方法设置this.tableHeight/tableMaxHeight属性，指定table高度(默认自适应)，如果设置 了tableMaxHeight属性，tableHeight则不会生效"
+        />
+      </template>
+    </a-table>
   </div>
 </template>
 <script>
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    scopedSlots: { customRender: "name" },
+    sorter: true,
+    width: "20%",
+    filters: [
+      { text: "John Brown", value: "John Brown" },
+      { text: "Jim Green", value: "Jim Green" },
+    ],
+  },
+  {
+    title: "Tags",
+    key: "tags",
+    dataIndex: "tags",
+    scopedSlots: { customRender: "tags" },
+  },
+  {
+    title: "Cash Assets",
+    className: "column-money",
+    dataIndex: "money",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+  },
+  {
+    title: "Action",
+    dataIndex: "action",
+    fixed: "right",
+    width: "auto",
+    scopedSlots: { customRender: "action" },
+  },
+];
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    money: "￥300,000.00",
+    address: "New York No. 1 Lake Park",
+    tags: ["nice", "developer"],
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    money: "￥1,256,000.00",
+    address: "London No. 1 Lake Park",
+    tags: ["loser"],
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "4",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "5",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "6",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "7",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "8",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "9",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+  {
+    key: "10",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+];
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
+  },
+  onSelect: (record, selected, selectedRows) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected, selectedRows, changeRows) => {
+    console.log(selected, selectedRows, changeRows);
+  },
+};
+
 export default {
   name: "Basic",
   components: {},
   data() {
     return {
-      
-    }
+      data,
+      columns,
+      rowSelection,
+      pagination: {},
+      loading: false,
+    };
   },
   created() {},
-  methods: {}
+  methods: {
+    onSearch() {},
+    handleTableChange(pagination, filters, sorter) {
+      console.log(pagination);
+      const pager = { ...this.pagination };
+      pager.current = pagination.current;
+      this.pagination = pager;
+      this.fetch({
+        results: pagination.pageSize,
+        page: pagination.current,
+        sortField: sorter.field,
+        sortOrder: sorter.order,
+        ...filters,
+      });
+    },
+    fetch(params = {}) {
+      console.log("params:", params);
+      this.loading = true;
+      reqwest({
+        url: "https://randomuser.me/api",
+        method: "get",
+        data: {
+          results: 10,
+          ...params,
+        },
+        type: "json",
+      }).then((data) => {
+        const pagination = { ...this.pagination };
+        // Read total count from server
+        // pagination.total = data.totalCount;
+        pagination.total = 200;
+        this.loading = false;
+        this.data = data.results;
+        this.pagination = pagination;
+      });
+    },
+  },
 };
 </script>
-<style lang="stylus" scoped></style>
+<style lang="less" scoped>
+th.column-money,
+td.column-money {
+  text-align: right !important;
+}
+</style>

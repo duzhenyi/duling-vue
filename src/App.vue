@@ -18,4 +18,7 @@ export default {
   height: 100%;
   overflow: hidden;
 }
+.element-right{
+  float: right;
+}
 </style>
