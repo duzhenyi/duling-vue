@@ -109,8 +109,8 @@ const navRouters = {
             target: '',
             children: [
                 { key: 'd_6_1', title: '基础表格', name: 'Basic1', path: '/basic1', component: 'table/basic', target: '', children: [] },
-                { key: 'd_6_2', title: '动态表格', name: 'Dynamic', path: '/dynamic', component: 'table/dynamic', target: '', children: [] },
-                { key: 'd_6_3', title: '其他表格', name: 'Other', path: '/other', component: 'table/other', target: '', children: [] },
+                { key: 'd_6_2', title: '可编辑表格', name: 'EditTable', path: '/editTable', component: 'table/editTable', target: '', children: [] },
+                { key: 'd_6_3', title: '树形表格', name: 'TreeTable', path: '/treeTable', component: 'table/treeTable', target: '', children: [] },
             ]
         },
         {
