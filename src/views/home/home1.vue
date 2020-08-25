@@ -358,7 +358,6 @@ export default {
   },
 };
 </script>
-<style lang="stylus" scoped></style>
 <style scoped>
 .el-top {
   margin-top: 10px;
