@@ -108,7 +108,7 @@ const navRouters = {
             redirect: '/basic',
             target: '',
             children: [
-                { key: 'd_6_1', title: '基础表格', name: 'Basic1', path: '/basic1', component: 'table/basic', target: '', children: [] },
+                { key: 'd_6_1', title: '基础表格', name: 'BasicTable', path: '/basicTable', component: 'table/basicTable', target: '', children: [] },
                 { key: 'd_6_2', title: '可编辑表格', name: 'EditTable', path: '/editTable', component: 'table/editTable', target: '', children: [] },
                 { key: 'd_6_3', title: '树形表格', name: 'TreeTable', path: '/treeTable', component: 'table/treeTable', target: '', children: [] },
             ]
@@ -123,7 +123,9 @@ const navRouters = {
             redirect: '/basic',
             target: '',
             children: [
-                { key: 'd_7_1', title: '基础表单', name: 'BasicTable', path: '/basic', component: 'form/basic', target: '', children: [] },
+                { key: 'd_7_1_1', title: '单列表单', name: 'BasicForm1', path: '/basicForm1', component: 'form/basicForm1', target: '', children: [] },
+                { key: 'd_7_1_2', title: '多列表单', name: 'BasicForm2', path: '/basicForm2', component: 'form/basicForm2', target: '', children: [] },
+                { key: 'd_7_1_3', title: '只读表单', name: 'BasicForm3', path: '/basicForm3', component: 'form/basicForm3', target: '', children: [] },
                 { key: 'd_7_2', title: '文章详情', name: 'Article', path: '/article', component: 'form/article', target: '', children: [] },
                 { key: 'd_7_3', title: '商品详情', name: 'Product', path: '/product', component: 'form/product', target: '', children: [] },
                 { key: 'd_7_4', title: '订单详情', name: 'OrderDetail', path: '/order', component: 'form/order', target: '', children: [] },
