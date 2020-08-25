@@ -351,24 +351,7 @@ export default {
     },
     fetch(params = {}) {
       console.log("params:", params);
-      this.loading = true;
-      reqwest({
-        url: "https://randomuser.me/api",
-        method: "get",
-        data: {
-          results: 10,
-          ...params,
-        },
-        type: "json",
-      }).then((data) => {
-        const pagination = { ...this.pagination };
-        // Read total count from server
-        // pagination.total = data.totalCount;
-        pagination.total = 200;
-        this.loading = false;
-        this.data = data.results;
-        this.pagination = pagination;
-      });
+      this.loading = true; 
     },
   },
 };
