@@ -50,31 +50,127 @@
         </a-dropdown>
       </span>
       <template slot="title">
-        <a-button type="primary" @click="handleAdd">
-          <a-icon type="plus-circle" />添加
-        </a-button>
-        <a-divider type="vertical" />
-        <a-button type="danger" @click="handleAdd">
-          <a-icon type="minus-circle" />删除
-        </a-button>
-        <a-divider type="vertical" />
-        <a-button type="dashed" @click="handleAdd">
-          <a-icon type="vertical-align-top" />导入
-        </a-button>
-        <a-divider type="vertical" />
-        <a-button type="dashed" @click="handleAdd">
-          <a-icon type="vertical-align-bottom" />导出
-        </a-button>
-        <div class="element-right">
-          <a-input-search placeholder="请输入关键字查询" @search="onSearch">
-            <a-icon slot="addonAfter" type="down" />
+        <a-row :gutter="8">
+          <a-col :span="5">
+            <a-input-search compact placeholder="请输入关键字查询" @search="handleSearch">
+              <a-popover
+                arrow-point-at-center
+                trigger="click"
+                placement="bottomLeft"
+                slot="addonAfter"
+              >
+                <a-icon @click="showSearchForm" style="cursor: pointer;" type="down" />
+                <template slot="content">
+                  <a-form
+                    :label-col="{ span: 8 }"
+                    :wrapper-col="{ span: 16 }"
+                    class="ant-advanced-search-form"
+                    @submit="handleSearch"
+                  >
+                    <a-row>
+                      <a-col :span="8">
+                        <a-form-item label="Field1">
+                          <a-input placeholder="placeholder" />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field3">
+                          <a-date-picker />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field2">
+                          <a-switch checked-children="开" un-checked-children="关" default-checked />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
+                    <a-row>
+                      <a-col :span="8">
+                        <a-form-item label="Field1">
+                          <a-input placeholder="placeholder" />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field3">
+                          <a-date-picker />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field2">
+                          <a-switch default-checked>
+                            <a-icon slot="checkedChildren" type="check" />
+                            <a-icon slot="unCheckedChildren" type="close" />
+                          </a-switch>
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
+                    <a-row>
+                      <a-col :span="8">
+                        <a-form-item label="Field7">
+                          <a-input-password
+                            allow-clear
+                            placeholder="with input password and allowClear"
+                          />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field5">
+                          <a-select default-value="1">
+                            <a-select-option value="1">Option 1</a-select-option>
+                            <a-select-option value="2">Option 2</a-select-option>
+                            <a-select-option value="3">Option 3</a-select-option>
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="8">
+                        <a-form-item label="Field6">
+                          <a-input-number style="width:100%" />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
+
+                    <a-row>
+                      <a-col :span="24" :style="{ textAlign: 'right' }">
+                        <a-button @click="handleSearch">
+                          <a-icon type="search" />查询
+                        </a-button>
+                        <a-button :style="{ marginLeft: '8px' }" @click="handleReset">
+                          <a-icon type="reload" />重置
+                        </a-button>
+                        <a-button :style="{ marginLeft: '8px' }" @click="showSearchForm">
+                          <a-icon type="poweroff" />关闭
+                        </a-button>
+                      </a-col>
+                    </a-row>
+                  </a-form>
+                </template>
+              </a-popover>
+            </a-input-search>
+          </a-col>
+
+          <a-col :span="19">
+            <a-button type="primary" @click="handleAdd">
+              <a-icon type="plus-circle" />添加
+            </a-button>
+            <a-divider type="vertical" />
+            <a-button type="danger" @click="handleAdd">
+              <a-icon type="minus-circle" />删除
+            </a-button>
+            <a-divider type="vertical" />
+            <a-button type="dashed" @click="handleAdd">
+              <a-icon type="vertical-align-top" />导入
+            </a-button>
+            <a-divider type="vertical" />
+            <a-button type="dashed" @click="handleAdd">
+              <a-icon type="vertical-align-bottom" />导出
+            </a-button>
             <a-divider type="vertical" />
             <a-popover placement="top">
               <template slot="content">刷新</template>
               <a-button :loading="loading" icon="sync"></a-button>
             </a-popover>
-          </a-input-search>
-        </div>
+          </a-col>
+        </a-row>
       </template>
       <template slot="footer">
         <a-alert
@@ -221,11 +317,25 @@ export default {
       rowSelection,
       pagination: {},
       loading: false,
+      visibleSearch: true,
     };
   },
   created() {},
   methods: {
-    onSearch() {},
+    // 重置查询
+    handleReset() {},
+    // 显示、关闭查询
+    showSearchForm() {
+      this.visibleSearch = !this.visibleSearch;
+    },
+    handleSearch(e) {
+      e.preventDefault();
+      // this.form.validateFields((error, values) => {
+      //   console.log("error", error);
+      //   console.log("Received values of form: ", values);
+      // });
+    },
+    handleAdd() {},
     handleTableChange(pagination, filters, sorter) {
       console.log(pagination);
       const pager = { ...this.pagination };
