@@ -1,6 +1,13 @@
 <template>
  <div style="padding:10px">
-   article
+   <a-row>
+     <a-col :span="12">
+       1111111
+     </a-col>
+     <a-col :span="12">
+       222222222
+     </a-col>
+   </a-row>
   </div>
 </template>
 <script>
