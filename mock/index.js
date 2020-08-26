@@ -127,9 +127,8 @@ const navRouters = {
                 { key: 'd_7_2', title: '多列表单', name: 'BasicForm2', path: '/basicForm2', component: 'form/basicForm2', target: '', children: [] },
                 { key: 'd_7_3', title: '只读表单', name: 'BasicForm3', path: '/basicForm3', component: 'form/basicForm3', target: '', children: [] },
                 { key: 'd_7_4', title: '添加文章', name: 'ArticleAdd', path: '/articleAdd', component: 'form/articleAdd', target: '', children: [] },
-                { key: 'd_7_5', title: '文章详情', name: 'Article', path: '/article', component: 'form/article', target: '', children: [] },
-                { key: 'd_7_6', title: '商品详情', name: 'Product', path: '/product', component: 'form/product', target: '', children: [] },
-                { key: 'd_7_7', title: '表单生成器', name: 'Builder', path: '/builder', component: 'form/builder', target: '', children: [] },
+                { key: 'd_7_5', title: '文章列表', name: 'ArticleList', path: '/articleList', component: 'form/articleList', target: '', children: [] },
+                { key: 'd_7_6', title: '文章详情', name: 'Article', path: '/article', component: 'form/article', target: '', children: [] },
             ]
         },
         {
@@ -166,12 +165,10 @@ const navRouters = {
             redirect: '/excel1',
             target: '',
             children: [
-                { key: 'd_10_1', title: '导出Excel', name: 'Excel1', path: '/excel1', component: 'office/excel1', target: '', children: [] },
-                { key: 'd_10_2', title: '导出已选择项', name: 'Excel2', path: '/excel2', component: 'office/excel2', target: '', children: [] },
-                { key: 'd_10_3', title: '导出多级表头', name: 'Excel3', path: '/excel3', component: 'office/excel3', target: '', children: [] },
-                { key: 'd_10_4', title: '上传Excel', name: 'Excel4', path: '/excel4', component: 'office/excel4', target: '', children: [] },
-                { key: 'd_10_5', title: '导出ZIP', name: 'ZIP1', path: '/zip1', component: 'office/zip1', target: '', children: [] },
-                { key: 'd_10_6', title: '导出PDF', name: 'PDF1', path: '/pdf1', component: 'office/pdf1', target: '', children: [] },
+                { key: 'd_10_1', title: '导出Excel', name: 'ExcelExport', path: '/excelExport', component: 'office/excelExport', target: '', children: [] },
+                { key: 'd_10_4', title: '导入Excel', name: 'ExcelImport', path: '/excelImport', component: 'office/excelImport', target: '', children: [] },
+                { key: 'd_10_5', title: '导出ZIP', name: 'ZipImport', path: '/zipImport', component: 'office/zipImport', target: '', children: [] },
+                { key: 'd_10_6', title: '导出PDF', name: 'PdfExport', path: '/pdfExport', component: 'office/pdfExport', target: '', children: [] },
             ]
         },
         // {

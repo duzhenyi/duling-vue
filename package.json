@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@grapecity/spread-excelio": "^13.2.1",
     "@tinymce/tinymce-vue": "1.1.0",
     "ant-design-vue": "^1.6.4",
     "axios": "^0.19.2",
@@ -16,6 +17,7 @@
     "core-js": "^3.6.5",
     "driver.js": "^0.9.8",
     "echarts": "^4.8.0",
+    "file-saver": "^2.0.2",
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.0.0-rc.1",
     "jsoneditor": "^9.0.4",
@@ -25,6 +27,7 @@
     "mockjs": "^1.1.0",
     "qrcodejs2": "^0.0.2",
     "screenfull": "^5.0.2",
+    "script-loader": "^0.7.2",
     "tinymce": "4.8.5",
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",
@@ -35,7 +38,8 @@
     "vuedraggable": "^2.24.1",
     "vuex": "^3.5.1",
     "xgplayer": "^2.10.0",
-    "xgplayer-music": "^2.1.7"
+    "xgplayer-music": "^2.1.7",
+    "xlsx": "^0.16.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
