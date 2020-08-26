@@ -146,11 +146,11 @@ const navRouters = {
             ]
         }, {
             key: 'd_9',
-            title: '多语言',
-            name: 'Language',
+            title: '拍照视频',
+            name: 'Camera',
             icon: 'global',
-            path: '/language',
-            component: 'language/index',
+            path: '/camera',
+            component: 'camera/index',
             redirect: '',
             target: '',
             children: []
@@ -167,7 +167,6 @@ const navRouters = {
             children: [
                 { key: 'd_10_1', title: '导出Excel', name: 'ExcelExport', path: '/excelExport', component: 'office/excelExport', target: '', children: [] },
                 { key: 'd_10_4', title: '导入Excel', name: 'ExcelImport', path: '/excelImport', component: 'office/excelImport', target: '', children: [] },
-                { key: 'd_10_5', title: '导出ZIP', name: 'ZipImport', path: '/zipImport', component: 'office/zipImport', target: '', children: [] },
                 { key: 'd_10_6', title: '导出PDF', name: 'PdfExport', path: '/pdfExport', component: 'office/pdfExport', target: '', children: [] },
             ]
         },
