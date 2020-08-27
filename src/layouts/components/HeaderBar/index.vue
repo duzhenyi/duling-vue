@@ -52,12 +52,12 @@
         <!--顶部右侧工具-->
         <div class="header-tool-right">
           <!-- 面包导航 -->
-          <span class="tool" v-if="layout!='0'">
-            <a-breadcrumb :routes="routes">
+          <span class="tool" v-if="layout!='0' && this.breadcrumbs.length>0">
+            <a-breadcrumb :routes="breadcrumbs">
               <template slot="itemRender" slot-scope="{route, routes, paths }">
-                <a-icon :type="route.icon" v-if="route.icon" />
-                <span v-if="routes.indexOf(route) != routes.length - 1">{{ route.name }}</span>
-                <router-link v-else :to="`${paths.join('/')}`">{{ route.name }}</router-link>
+                <a-icon :type="route.meta.icon" v-if="route.meta.icon" />
+                <span v-if="routes.indexOf(route) != routes.length - 1">{{ route.meta.title }}</span>
+                <router-link v-else :to="`${paths.join('/')}`">{{ route.meta.title }}</router-link>
               </template>
             </a-breadcrumb>
           </span>
@@ -247,20 +247,26 @@ export default {
     ThemeBar,
     NavBar,
   },
+  watch: {
+    // 监听路由变化
+    $route(to, from) {
+      this.breadcrumbs = to.matched.splice(1);
+    },
+  },
   data() {
     return {
-      routes: [
-        {
-          path: "",
-          icon: "home",
-          name: "Home",
-        },
-        {
-          path: "/user",
-          icon: "user",
-          name: "User",
-        },
-      ],
+      breadcrumbs: [],
+      //   {
+      //     path: "",
+      //     icon: "home",
+      //     name: "Home",
+      //   },
+      //   {
+      //     path: "/user",
+      //     icon: "user",
+      //     name: "User",
+      //   },
+      // ],
       collapsed: false,
       visible: false,
       col_1_span: 3,
@@ -277,6 +283,10 @@ export default {
       this.col_2_span = 10;
       this.col_3_span = 14;
     }
+
+    // 设置显示的面包屑
+    this.breadcrumbs = this.$route.matched.splice(1);
+
     //主题配置页关闭的时候传值过来
     Bus.$on("showThemeDrawer", (val) => {
       this.visible = val;

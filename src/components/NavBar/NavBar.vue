@@ -57,7 +57,7 @@ export default {
   watch: {
     // 监听路由变化
     "$route.path": function (newVal, oldVal) {
-      const nav = this.getRouteByPath(this.navRoutes(), newVal, []);
+      const nav = this.getRouteByPath(this.navRoutes(), newVal);
       this.selectedKeys = [nav.key];
     },
   },
@@ -83,7 +83,7 @@ export default {
     },
     // 菜单选中时调用
     onSelect({ item, key, selectedKeys }) {
-      let nav = this.getRouteByKey(this.navRoutes(), this.selectedKeys[0], []);
+      let nav = this.getRouteByKey(this.navRoutes(), this.selectedKeys[0]);
       // 添加一个pane到vuex里面，如果存在则不添加，则选中
       this.addPane({
         key: nav.path,
@@ -91,7 +91,7 @@ export default {
       });
     },
     onClick({ item, key }) {
-      let nav = this.getRouteByKey(this.navRoutes(), key, []);
+      let nav = this.getRouteByKey(this.navRoutes(), key);
       // 添加一个pane到vuex里面，如果存在则不添加，则选中
       this.addPane({
         key: nav.path,
