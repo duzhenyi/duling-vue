@@ -38,7 +38,6 @@ const navRouters = {
             target: '',
             children: [
                 { key: '1_1', title: '首页1', name: 'Home1', path: '/home1', component: 'home/home1', target: '', children: [] },
-                { key: '1_2', title: '首页2', name: 'Home2', path: '/home2', component: 'home/home2', target: '', children: [] },
             ]
         },
         {
@@ -86,6 +85,7 @@ const navRouters = {
                 { key: 'd_4_8', title: '音频播放器', name: 'Music', path: '/music', component: 'plugs/music', target: '', children: [] },
                 { key: 'd_4_9', title: '地图API', name: 'Map', path: '/map', component: 'plugs/map', target: '', children: [] },
                 { key: 'd_4_10', title: '二维码', name: 'RCode', path: '/rcode', component: 'plugs/rcode', target: '', children: [] },
+                { key: 'd_4_11', title: '颜色选择器', name: 'Color', path: '/color', component: 'plugs/color', target: '', children: [] },
             ]
         },
         {

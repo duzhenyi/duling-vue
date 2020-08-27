@@ -1,10 +1,8 @@
 module.exports = {
   // token存储位置localStorage sessionStorage cookie
   Storage: "localStorage",
-  // 横纵布局 水平布局：horizontal 垂直布局：vertical 
-  layout: "horizontal",
-  // 菜单颜色
-  menuColor: '#FFFFFF',
+  // 横纵布局 
+  layout: "0",
   // 头部主题颜色 light dark
   headerTheme: "dark",
   // 侧边栏主题颜色 light dark
@@ -13,30 +11,7 @@ module.exports = {
   menuMode: "inline",
   // 是否显示logo
   displayLogo: true,
-  // 固定顶栏
-  fixedHeaderBar: false,
-  // 置顶顶栏 -需开启固定顶栏
-  topBar: false,
-  // 下滑时隐藏顶栏 -需开启固定顶栏
-  hideTopBarWhenSliding: false,
-  // 固定侧边栏
-  fixedSideBar: true,
-  // 侧边栏展示到左侧
-  fixedSideBarToLeft: true,
-  // 侧边栏开启手风琴模式
-  sidebarOpensAccordionMode: false,
-  // 显示折叠侧边栏按钮
-  showCollapseSidebarButton: false,
-  // 显示全局面包屑导航 -顶部菜单开启时无效
-  showGlobalBreadcrumbNavigation: true,
-  // 全局面包屑显示图标 -需开启全局面包屑导航
-  globalBreadcrumbDisplayIcon: true,
-  // 显示重载页面按钮
-  showReloadPageButton: false,
-  // 开启多页签
-  openMultipleTabs: true,
-  // 显示多语言选择
-  showMultilingualSelection: true,
+ 
   primaryColor: '#1890ff', // 全局主色
   linkColor: '#1890ff', // 链接色
   successColor: '#52c41a', // 成功色

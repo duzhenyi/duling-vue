@@ -1,28 +1,22 @@
 <template>
   <div id="components-layout-basic">
     <!--上中下垂直布局-->
-    <a-layout v-if="appconfig.layout==='vertical'">
+    <a-layout v-if="appconfig.layout==='0'">
       <header-bar
-        :fixedSideBar="appconfig.fixedSideBar"
+        :menus="menus"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
         :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
-      <content-bar
-        :openMultipleTabs="appconfig.openMultipleTabs"
-        :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
-        :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
-      ></content-bar>
+      <content-bar ></content-bar>
       <footer-bar></footer-bar>
     </a-layout>
 
     <!--上中（side 左+content）下布局-->
-    <a-layout
-      v-if="appconfig.layout==='horizontal' && !appconfig.fixedSideBar && appconfig.fixedTopBar && appconfig.fixedSideBarToLeft"
-    >
+    <a-layout v-if="appconfig.layout==='1'">
       <header-bar
-        :fixedSideBar="appconfig.fixedSideBar"
+        :menus="menus"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
         :headerTheme="appconfig.headerTheme"
@@ -31,43 +25,30 @@
       <a-layout>
         <sider-bar
           :menuMode="appconfig.menuMode"
-          :sideTheme="appconfig.sideTheme"
-          :fixedSideBar="appconfig.fixedSideBar"
+          :sideTheme="appconfig.sideTheme" 
           :displayLogo="appconfig.displayLogo"
           :layout="appconfig.layout"
           :menus="menus"
         ></sider-bar>
-        <content-bar
-          :openMultipleTabs="appconfig.openMultipleTabs"
-          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
-          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
-        ></content-bar>
+        <content-bar></content-bar>
       </a-layout>
       <footer-bar></footer-bar>
     </a-layout>
-
+ 
     <!--上中（side 右+content）下布局-->
-    <a-layout
-      v-if="appconfig.layout==='horizontal' && !appconfig.fixedSideBar && appconfig.fixedTopBar  && !appconfig.fixedSideBarToLeft "
-    >
+    <a-layout v-if="appconfig.layout==='2'"  >
       <header-bar
-        :fixedSideBar="appconfig.fixedSideBar"
+        :menus="menus"
         :layout="appconfig.layout"
         :menuMode="appconfig.menuMode"
         :headerTheme="appconfig.headerTheme"
         :displayLogo="appconfig.displayLogo"
       ></header-bar>
       <a-layout>
-        <content-bar
-          :openMultipleTabs="appconfig.openMultipleTabs"
-          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
-          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
-        ></content-bar>
-
+        <content-bar></content-bar>
         <sider-bar
           :menuMode="appconfig.menuMode"
           :sideTheme="appconfig.sideTheme"
-          :fixedSideBar="appconfig.fixedSideBar"
           :displayLogo="appconfig.displayLogo"
           :layout="appconfig.layout"
           :menus="menus"
@@ -77,32 +58,26 @@
     </a-layout>
 
     <!--左右（header+content+footer）布局-->
-    <a-layout v-if="appconfig.layout==='horizontal' && appconfig.fixedSideBar">
+    <a-layout v-if="appconfig.layout==='3'">
       <sider-bar
         :menuMode="appconfig.menuMode"
-        :sideTheme="appconfig.sideTheme"
-        :fixedSideBar="appconfig.fixedSideBar"
+        :sideTheme="appconfig.sideTheme" 
         :displayLogo="appconfig.displayLogo"
         :layout="appconfig.layout"
         :menus="menus"
       ></sider-bar>
       <a-layout>
         <header-bar
-          :fixedHeaderBar="appconfig.fixedHeaderBar"
-          :fixedSideBar="appconfig.fixedSideBar"
+          :menus="menus"
           :layout="appconfig.layout"
           :menuMode="appconfig.menuMode"
           :headerTheme="appconfig.headerTheme"
           :displayLogo="appconfig.displayLogo"
         ></header-bar>
-        <content-bar
-          :openMultipleTabs="appconfig.openMultipleTabs"
-          :showGlobalBreadcrumbNavigation="appconfig.showGlobalBreadcrumbNavigation"
-          :globalBreadcrumbDisplayIcon="appconfig.globalBreadcrumbDisplayIcon"
-        ></content-bar>
+        <content-bar ></content-bar>
         <footer-bar></footer-bar>
       </a-layout>
-    </a-layout> 
+    </a-layout>
   </div>
 </template>
 
@@ -116,12 +91,12 @@ export default {
     HeaderBar,
     SiderBar,
     ContentBar,
-    FooterBar
+    FooterBar,
   },
   data() {
     return {
       appconfig: appconfig,
-      menus: []
+      menus: [],
     };
   },
   computed: {
@@ -131,35 +106,18 @@ export default {
   created() {
     this.menus = this.$store.getters.navRoutes;
     this.appconfig.layout = this.$store.getters.layout;
-    this.appconfig.menuColor = this.$store.getters.menuColor;
     this.appconfig.headerTheme = this.$store.getters.headerTheme;
     this.appconfig.sideTheme = this.$store.getters.sideTheme;
     this.appconfig.menuMode = this.$store.getters.menuMode;
     this.appconfig.displayLogo = this.$store.getters.displayLogo;
-    this.appconfig.fixedHeaderBar = this.$store.getters.fixedHeaderBar;
-    this.appconfig.topBar = this.$store.getters.topBar;
-    this.appconfig.hideTopBarWhenSliding = this.$store.getters.hideTopBarWhenSliding;
-    this.appconfig.fixedSideBarToLeft = this.$store.getters.fixedSideBarToLeft;
-    this.appconfig.sidebarOpensAccordionMode = this.$store.getters.sidebarOpensAccordionMode;
-    this.appconfig.showCollapseSidebarButton = this.$store.getters.showCollapseSidebarButton;
-    this.appconfig.showGlobalBreadcrumbNavigation = this.$store.getters.showGlobalBreadcrumbNavigation;
-    this.appconfig.globalBreadcrumbDisplayIcon = this.$store.getters.globalBreadcrumbDisplayIcon;
-    this.appconfig.showReloadPageButton = this.$store.getters.showReloadPageButton;
-    this.appconfig.openMultipleTabs = this.$store.getters.openMultipleTabs;
-    this.appconfig.showMultilingualSelection = this.$store.getters.showMultilingualSelection;
   },
   methods: {},
   watch: {},
-  beforeCreate() {
-  },
-  beforeMount() {
-  },
-  mounted() {
-  },
-  beforeUpdate() {
-  },
-  updated() {
-  }
+  beforeCreate() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
 };
 </script>
 <style lang="less">
@@ -221,8 +179,6 @@ export default {
   border-bottom: 0px;
 }
 
-
-
 /*滚动条的宽度*/
 ::-webkit-scrollbar {
   width: 8px;
@@ -253,5 +209,9 @@ export default {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #606d71;
+}
+
+.v-note-wrapper {
+  z-index: 0 ;
 }
 </style>

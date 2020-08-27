@@ -4,7 +4,6 @@
   >
     <!-- 多标签页 -->
     <a-tabs
-      v-if="openMultipleTabs"
       v-model="activeKey"
       :hideAdd="true"
       type="editable-card"
@@ -119,14 +118,6 @@ export default {
       this.panes = this.paneStore;
       this.activeKey = this.paneActiveKey;
       this.$router.push({ path: activeKey }).catch((error) => {});
-    },
-  },
-  props: {
-    // 多标签页
-    openMultipleTabs: {
-      type: Boolean,
-      required: false,
-      default: false,
     },
   },
 };

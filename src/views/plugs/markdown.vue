@@ -1,8 +1,15 @@
 <template>
   <div style="padding:10px">
-    <mavon-editor v-model="content" :toolbars="markdownOption" @imgAdd="imgAdd" @change="change" ref="md" style="min-height: 550px" />
-    
-    <a-button  type="primary" @click="save">提交</a-button>
+    <mavon-editor
+      v-model="content"
+      :toolbars="markdownOption"
+      @imgAdd="imgAdd"
+      @change="change"
+      ref="md"
+      style="min-height: 550px"
+    />
+
+    <a-button type="primary" @click="save">提交</a-button>
   </div>
 </template>
 <script>
@@ -57,7 +64,7 @@ export default {
   methods: {
     // 将图片上传到服务器，返回地址替换到md中
     imgAdd(pos, $file) {
-      console.log($file)
+      console.log($file);
       let formdata = new FormData();
       this.$upload
         .post("/上传接口地址", formdata)
@@ -83,6 +90,11 @@ export default {
   },
 };
 </script>
-<style lang="stylus" scoped></style>
+<style lang="css" scoped>
+/* 解决编辑器遮挡住顶部菜单 */
+.v-note-wrapper {
+  z-index: 0;
+}
+</style>
 
  
