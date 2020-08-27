@@ -284,13 +284,14 @@ export default {
       this.col_3_span = 14;
     }
 
-    // 设置显示的面包屑
-    this.breadcrumbs = this.$route.matched.splice(1);
-
     //主题配置页关闭的时候传值过来
     Bus.$on("showThemeDrawer", (val) => {
       this.visible = val;
     });
+  },
+  mounted() {
+    // 设置显示的面包屑
+    this.breadcrumbs = this.$route.matched.splice(1);
   },
   methods: {
     ...mapActions(["loginOut"]),
