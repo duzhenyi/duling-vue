@@ -170,6 +170,19 @@ const navRouters = {
                 { key: 'd_10_6', title: '导出PDF', name: 'PdfExport', path: '/pdfExport', component: 'office/pdfExport', target: '', children: [] },
             ]
         },
+        {
+            key: 'd_11',
+            title: '表单设计器',
+            name: 'FormBuilder',
+            icon: 'container',
+            path: '/',
+            component: 'EmptyLayout',
+            redirect: '/formBuilder',
+            target: '',
+            children: [
+                { key: 'd_11_1', title: '表单设计器', name: 'FormBuilder', path: '/formBuilder', component: 'formBuilder/index', target: '', children: [] },
+            ]
+        },
         // {
         //     key: '2',
         //     title: '用户中心',
