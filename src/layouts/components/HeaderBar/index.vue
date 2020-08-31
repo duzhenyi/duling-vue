@@ -52,8 +52,8 @@
         <!--顶部右侧工具-->
         <div class="header-tool-right">
           <!-- 面包导航 -->
-          <span class="tool" v-if="layout!='0' && this.breadcrumbs.length>0">
-            <a-breadcrumb :routes="breadcrumbs">
+          <span class="tool" v-if="layout!='0' && this.breadcrumbData.length>0">
+            <a-breadcrumb :routes="breadcrumbData">
               <template slot="itemRender" slot-scope="{route, routes, paths }">
                 <a-icon :type="route.meta.icon" v-if="route.meta.icon" />
                 <span v-if="routes.indexOf(route) != routes.length - 1">{{ route.meta.title }}</span>
@@ -249,13 +249,13 @@ export default {
   },
   watch: {
     // 监听路由变化
-    $route(to, from) {
-      this.breadcrumbs = to.matched.splice(1);
+    "$route": function (router) {
+      this.breadcrumbData = router.matched;
     },
   },
   data() {
     return {
-      breadcrumbs: [],
+      breadcrumbData: [],
       //   {
       //     path: "",
       //     icon: "home",
@@ -291,7 +291,7 @@ export default {
   },
   mounted() {
     // 设置显示的面包屑
-    this.breadcrumbs = this.$route.matched.splice(1);
+    this.breadcrumbData = this.$route.matched.splice(1);
   },
   methods: {
     ...mapActions(["loginOut"]),
