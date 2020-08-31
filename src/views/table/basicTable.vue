@@ -176,8 +176,7 @@
         <a-alert
           show-icon
           type="warning"
-          message="这里是表格的页脚,可以放置部分统计的结果等,表单高度自定义设置
-可在扩展js中的onInit方法设置this.tableHeight/tableMaxHeight属性，指定table高度(默认自适应)，如果设置 了tableMaxHeight属性，tableHeight则不会生效"
+          message="这里是表格的页脚,可以放置部分统计的结果等,一去二三里，山村四五家，亭台六七座，八九十之花！"
         />
       </template>
     </a-table>
