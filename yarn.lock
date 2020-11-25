@@ -4507,15 +4507,10 @@ highlight.js-async-webpack@^1.0.4:
   resolved "https://registry.yarnpkg.com/highlight.js-async-webpack/-/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
   integrity sha1-wGtnv5nwSQRdYrdW5YVbCRLsYWw=
 
-highlight.js@^9.11.0:
-  version "9.18.3"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.3.tgz#a1a0a2028d5e3149e2380f8a865ee8516703d634"
-  integrity sha512-zBZAmhSupHIl5sITeMqIJnYCDfAEc3Gdkqj65wC1lpI468MMQeeQkhcIAvk+RylAkxrCcI9xy9piHiXeQ1BdzQ==
-
-highlight.js@^9.6.0:
-  version "9.18.1"
-  resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.18.1.tgz?cache=0&sync_timestamp=1589245951135&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhighlight.js%2Fdownload%2Fhighlight.js-9.18.1.tgz#ed21aa001fe6252bb10a3d76d47573c6539fe13c"
-  integrity sha1-7SGqAB/mJSuxCj121HVzxlOf4Tw=
+highlight.js@^9.11.0, highlight.js@^9.6.0:
+  version "9.18.5"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
+  integrity sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
