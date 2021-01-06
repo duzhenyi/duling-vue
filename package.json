@@ -30,7 +30,7 @@
     "qrcodejs2": "^0.0.2",
     "screenfull": "^5.0.2",
     "script-loader": "^0.7.2",
-    "tinymce": "4.8.5",
+    "tinymce": "5.6.0",
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",
     "vue-clipboard2": "^0.3.1",
