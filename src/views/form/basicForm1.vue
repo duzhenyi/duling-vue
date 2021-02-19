@@ -11,11 +11,27 @@
         <a-input
           v-model="form.name"
           @blur="
-          () => {
-            $refs.name.onFieldBlur();
-          }
-        "
+            () => {
+              $refs.name.onFieldBlur();
+            }
+          "
         />
+      </a-form-model-item>
+      <a-form-model-item ref="name" label="Activity name" prop="name">
+        <a-tree-select
+          style="width: 100%"
+          :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
+          :replace-fields="{
+            children: 'children',
+            title: 'name',
+            key: 'key',
+            value: 'value',
+          }"
+          :tree-data="treeData"
+          placeholder="Please select"
+          tree-default-expand-all
+        >
+        </a-tree-select>
       </a-form-model-item>
       <a-form-model-item label="Activity zone" prop="region">
         <a-select v-model="form.region" placeholder="please select your zone">
@@ -29,7 +45,7 @@
           show-time
           type="date"
           placeholder="Pick a date"
-          style="width: 100%;"
+          style="width: 100%"
         />
       </a-form-model-item>
       <a-form-model-item label="Instant delivery" prop="delivery">
@@ -53,15 +69,40 @@
       </a-form-model-item>
       <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
         <a-button type="primary" @click="onSubmit">Create</a-button>
-        <a-button style="margin-left: 10px;" @click="resetForm">Reset</a-button>
+        <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
       </a-form-model-item>
     </a-form-model>
   </a-card>
 </template>
 <script>
+const treeData = [
+  {
+    name: 'Node1',
+    value: '0-0',
+    key: '0-0',
+    children: [
+      {
+        value: '0-0-1',
+        key: '0-0-1',
+        name: 'title',
+      },
+      {
+        name: 'Child Node2',
+        value: '0-0-2',
+        key: '0-0-2',
+      },
+    ],
+  },
+  {
+    name: 'Node2',
+    value: '0-1',
+    key: '0-1',
+  },
+]
 export default {
   data() {
     return {
+      treeData,
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
       other: "",

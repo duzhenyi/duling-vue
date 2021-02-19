@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     creatQrCode() {
-      var qrcode = new QRCode(this.$refs.qrCodeUrl, {
+     new QRCode(this.$refs.qrCodeUrl, {
         text: "你好，这里是DuLing-VUE", // 需要转换为二维码的内容
         width: 100,
         height: 100,

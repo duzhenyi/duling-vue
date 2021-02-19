@@ -5,9 +5,16 @@ const path = require("path");
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+const Timestamp = new Date().getTime();
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/', //部署到服务器用./
   outputDir: 'dist', // 打包的目录
+  configureWebpack: { // webpack 配置
+    output: { // 输出重构  打包编译后的 文件名称  【模块名称.版本号.时间戳】
+      filename: `[name].${process.env.VUE_APP_VERSION}.${Timestamp}.js`,
+      chunkFilename: `[name].${process.env.VUE_APP_VERSION}.${Timestamp}.js`
+    },
+  },
   lintOnSave: true, // 在保存时校验格式
   productionSourceMap: false, // 生产环境是否生成 SourceMap，不生成.map文件
   devServer: {
@@ -22,9 +29,8 @@ module.exports = {
   chainWebpack: (config) => {
     //设置resolve
     config.resolve.alias
-    .set('@$', resolve('src')) // @后面可以跟其他参数@xxx都代表src下面
-    .set('_c', resolve('src/components'))
-      
+      .set('@$', resolve('src')) // @后面可以跟其他参数@xxx都代表src下面
+      .set('_c', resolve('src/components'))
   },
   // ant design vue 定制css
   css: {

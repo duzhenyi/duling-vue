@@ -1,125 +1,49 @@
 <template>
   <a-collapse>
-    <a-collapse-panel key="1" header="布局控件">
-      <draggable class="list-group" tag="div" v-model="centerList" 
-      :group="{ name: groupName, pull: 'clone', put: false }" 
-      v-bind="dragOptions">
-        <transition-group type="transition" tag="div"  name="flip-list">
-          <a-tag key="minus">
-            <a-icon type="minus" />分割线
-          </a-tag>
-          <a-tag key="calendar">
-            <a-icon type="calendar" />卡片布局
-          </a-tag>
-          <a-tag key="database">
-            <a-icon type="database" />栅格布局
-          </a-tag>
-          <a-tag key="table">
-            <a-icon type="table" />表格布局
-          </a-tag>
-        </transition-group>
-      </draggable>
+    <a-collapse-panel key="1" header="布局控件" >
+      <a-tag @dragstart="handleDragStart" draggable data-index="a-divider"> <a-icon type="minus" />分割线 </a-tag>
+      <a-tag @dragstart="handleDragStart" draggable data-index="a-card"><a-icon type="calendar" />卡片布局</a-tag>
+      <a-tag @dragstart="handleDragStart" draggable data-index="a-row"><a-icon type="database" />栅格布局</a-tag>
+      <a-tag @dragstart="handleDragStart" draggable data-index="a-form"> <a-icon type="form" />表单布局 </a-tag>
     </a-collapse-panel>
-    <a-collapse-panel key="2" header="基础控件">
-      <draggable tag="div" class="list-group" v-model="centerList" v-bind="dragOptions">
-        <transition-group type="transition" name="flip-list">
-          <a-tag key="edit">
-            <a-icon type="edit" />文本输入框
-          </a-tag>
-          <a-tag key="italic">
-            <a-icon type="italic" />数字输入框
-          </a-tag>
-          <a-tag key="lock">
-            <a-icon type="lock" />密码输入框
-          </a-tag>
-          <a-tag key="check-circle">
-            <a-icon type="check-circle" />单选框
-          </a-tag>
-          <a-tag key="check-square">
-            <a-icon type="check-square" />多选框
-          </a-tag>
-          <a-tag key="down-square">
-            <a-icon type="down-square" />下拉选择器
-          </a-tag>
-          <a-tag key="history">
-            <a-icon type="history" />日期选择器
-          </a-tag>
-          <a-tag key="clock-circle">
-            <a-icon type="clock-circle" />时间选择器
-          </a-tag>
-          <a-tag key="cluster">
-            <a-icon type="cluster" />树选择器
-          </a-tag>
-          <a-tag key="deployment-unit">
-            <a-icon type="deployment-unit" />级联选择器
-          </a-tag>
-          <a-tag key="bars">
-            <a-icon type="bars" />滑动输入条
-          </a-tag>
-          <a-tag key="unlock">
-            <a-icon type="unlock" />开关
-          </a-tag>
-          <a-tag key="bold">
-            <a-icon type="bold" />文字
-          </a-tag>
-          <a-tag key="minus-square">
-            <a-icon type="minus-square" />按钮
-          </a-tag>
-          <a-tag key="tag">
-            <a-icon type="tag" />标签
-          </a-tag>
-          <a-tag key="info">
-            <a-icon type="info" />提示
-          </a-tag>
-          <a-tag key="html5">
-            <a-icon type="html5" />HTML
-          </a-tag>
-          <a-tag key="menu">
-            <a-icon type="menu" />动态表格
-          </a-tag>
-          <a-tag key="container">
-            <a-icon type="container" />富文本
-          </a-tag>
-          <a-tag key="picture">
-            <a-icon type="picture" />上传图片
-          </a-tag>
-          <a-tag key="file">
-            <a-icon type="file" />上传文件
-          </a-tag>
-          <a-tag key="star">
-            <a-icon type="star" />评分
-          </a-tag>
-        </transition-group>
-      </draggable>
+    <a-collapse-panel key="2" header="基础控件" @dragstart="handleDragStart">
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-input"> <a-icon type="edit" />文本输入框 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-input-number"> <a-icon type="italic" />数字输入框 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-input-password"> <a-icon type="lock" />密码输入框 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-radio"><a-icon type="check-circle" />单选框</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-checkbox"><a-icon type="check-square" />多选框</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-select"><a-icon type="down-square" />下拉选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-date-picker"><a-icon type="history" />日期选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-week-picker"><a-icon type="history" />周日期选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-month-picker"><a-icon type="history" />月日期选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-range-picker"><a-icon type="history" />间隔日期选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-time-picker"><a-icon type="clock-circle" />时间选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-tree-select"> <a-icon type="cluster" />树选择器 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-cascader"><a-icon type="deployment-unit" />级联选择器</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-slider"> <a-icon type="bars" />滑动输入条 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-switch"> <a-icon type="unlock" />开关 </a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-button"><a-icon type="minus-square" />按钮</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-tag"> <a-icon type="tag" />标签</a-tag>
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-alert"> <a-icon type="info" />提示 </a-tag>
+      <!-- <a-tag  @dragstart="handleDragStart" draggable data-index="html5"> <a-icon type="html5" />HTML </a-tag> -->
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-table"> <a-icon type="menu" />动态表格 </a-tag>
+      <!-- <a-tag  @dragstart="handleDragStart" draggable data-index="container"><a-icon type="container" />富文本</a-tag> -->
+      <a-tag  @dragstart="handleDragStart" draggable data-index="a-upload"> <a-icon type="picture" />上传 </a-tag>
     </a-collapse-panel>
   </a-collapse>
 </template>
 <script>
-import Draggable from "vuedraggable";
 export default {
-  components: {
-    Draggable,
-  },
+  components: {},
   data() {
     return {};
   },
-  computed: {
-    dragOptions() {
-      return {
-        animation: 200,
-        group: "description",
-        disabled: false,
-        ghostClass: "ghost",
-      };
+  methods: {
+    // 在拖拽刚开始时触发。它主要用于将拖拽的组件信息传递给画布
+    handleDragStart(e) {
+      // 传递组件绑定的数据
+      e.dataTransfer.setData("key", e.target.dataset.index);
     },
-  },
-  props: {
-    centerList: {
-      type: Array,
-    },
-    groupName:{
-        type:String
-    }
   },
 };
 </script>

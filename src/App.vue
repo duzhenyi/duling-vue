@@ -17,6 +17,7 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  color:var(colr1);
 }
 .element-right{
   float: right;

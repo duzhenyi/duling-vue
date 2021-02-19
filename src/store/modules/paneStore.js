@@ -4,10 +4,12 @@ const paneStore = {
             key: "/home1",
             title: "首页",
             closable: false // 禁止关闭
-        }, {
-            key: "/home2",
-            title: "首页2"
-        }],
+        }
+            // , {
+            //     key: "/home2",
+            //     title: "首页2"
+            // }
+        ],
         activeKey: '/home1'
     },
     getters: {
@@ -44,13 +46,13 @@ const paneStore = {
          * @param {当前状态属性} state 
          * @param {要删除的pane} pane 
          */
-        delPane: (state, pane) => { 
+        delPane: (state, pane) => {
             for (const [i, v] of state.panes.entries()) {
                 if (v.key === pane.key) {
                     state.panes.splice(i, 1);
                     break;
                 }
-            } 
+            }
         },
         /**
          * 删除其他pane
